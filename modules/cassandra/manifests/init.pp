@@ -1,9 +1,10 @@
 class cassandra {
   service{'cassandra': 
-    require => Package['cassandra'],
+    require => Package['cassandra-server'],
     ensure => 'running'}
   
-  package{'cassandra': 
+  package{'cassandra-server':
+    name => 'cassandra'
     ensure => 'installed'}
   
   file{'cassandra_config':
