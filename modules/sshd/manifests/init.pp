@@ -1,4 +1,4 @@
-class ssh{
+class sshd{
   package{'sshd':
     ensure => 'running',
     require => Package['openssh-server'],
