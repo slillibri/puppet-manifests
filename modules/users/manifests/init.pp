@@ -5,6 +5,12 @@ class users{
     shell => '/bin/bash',
     groups => ['dialout','cdrom','floppy','audio','video','plugdev','adm','sudo']}
   
+  file{'/home/scott':
+    ensure => 'directory',
+    require => User['scott'],
+    owner => 'scott',
+    group  => 'scott'}
+    
   file{'/home/scott/.ssh':
     ensure => 'directory',
     require => User['scott']}
