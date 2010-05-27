@@ -5,7 +5,8 @@ class gems{
     mode  => 644,
     source => 'puppet:///rubygems/gemsrc'}
   
-  package{'cassandra':
+  package{'cassandra_gem':
+    name => 'cassandra',
     provider => 'gem',
     ensure => 'installed'}
   
