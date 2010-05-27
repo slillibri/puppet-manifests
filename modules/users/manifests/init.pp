@@ -3,7 +3,7 @@ class users{
     comment => 'Scott Lillibridge',
     home => '/home/scott',
     shell => '/bin/bash',
-    groups => ['scott','dialout','cdrom','floppy','audio','video','plugdev','adm','sudo']}
+    groups => ['dialout','cdrom','floppy','audio','video','plugdev','adm','sudo']}
   
   file{'/home/scott/.ssh':
     ensure => 'directory',
