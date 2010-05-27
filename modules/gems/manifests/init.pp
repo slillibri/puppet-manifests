@@ -1,4 +1,6 @@
 class gems{
+  require development
+  
   file {'/root/.gemrc':
     owner => 'root',
     group => 'root',

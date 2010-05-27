@@ -1,4 +1,5 @@
 node 'li91-20.members.linode.com' {
+  include development
 	include sudo
 	include rsync
 	include users
