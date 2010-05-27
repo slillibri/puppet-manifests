@@ -4,7 +4,7 @@ class cassandra_server {
     ensure => 'running'}
   
   package{'cassandra_server':
-    name => 'cassandra'
+    name => 'cassandra',
     ensure => 'installed'}
   
   file{'cassandra_config':
