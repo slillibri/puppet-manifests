@@ -1,7 +1,8 @@
 class sshd{
+  service{'ssh': require => Package['openssh-server']}
+  
   package{'openssh-server':
-    ensure => 'installed',
-    subscribe => File['sshd_config']}
+    ensure => 'installed'}
   
   file{'sshd_config':
     name => '/etc/ssh/sshd_config',
@@ -9,5 +10,5 @@ class sshd{
     group => 'root',
     mode => '644',
     source => 'puppet:///sshd/sshd_config',
-    require => Package['openssh-server']}
+    notify => Service['ssh']}
 }

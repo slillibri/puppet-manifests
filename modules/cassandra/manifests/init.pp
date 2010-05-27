@@ -1,7 +1,8 @@
 class cassandra {
+  service{'cassandra': require => Package['cassandra']}
+  
   package{'cassandra': 
-    ensure => 'package',
-    subscribe => File['cassandra_config']}
+    ensure => 'installed'}
   
   file{'cassandra_config':
     name => '/etc/cassandra/storage-conf.xml',
@@ -9,5 +10,6 @@ class cassandra {
     group => 'root',
     mode => '644',
     source => 'puppet:///cassandra/storage-conf.xml',
-    require => Package['cassandra']}
+    notify => Service['cassandra']}
+    
 }
