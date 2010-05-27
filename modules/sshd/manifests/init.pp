@@ -4,7 +4,7 @@ class ssh{
     require => Package['openssh-server'],
     subscribe => File['sshd_config']}
   
-  File{'sshd_config':
+  file{'sshd_config':
     name => '/etc/ssh/sshd_config',
     owner => 'root',
     group => 'root',
