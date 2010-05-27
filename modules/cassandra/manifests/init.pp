@@ -1,7 +1,6 @@
 class cassandra {
   package{'cassandra': 
     ensure => 'package',
-    require => Package['cassandra'],
     subscribe => File['cassandra_config']}
   
   file{'cassandra_config':
