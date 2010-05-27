@@ -9,7 +9,7 @@ class stocks{
   
   file{'stockwatcher':
     name => '/usr/local/bin/stockwatcher.rb',
-    source => 'puppet:///stocks/stockwatcher.rb'
+    source => 'puppet:///stocks/stockwatcher.rb',
     owner => 'root',
     group => 'root',
     mode => '755',
@@ -28,6 +28,6 @@ class stocks{
     source => 'puppet:///stocks/colstats.rb',
     owner => 'root',
     group => 'root',
-    mode => '755'
+    mode => '755',
     require => [Class['cassandra'],Class['gems']]}
 }
