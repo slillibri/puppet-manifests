@@ -13,7 +13,7 @@ class stocks{
     owner => 'root',
     group => 'root',
     mode => '755',
-    require => [Class['rabbitmq'],Class['cassandra']]}
+    require => [Class['rabbitmq'],Class['cassandra'],Class['gems']]}
     
   file{'stockpublisher':
     name => '/usr/local/bin/stockpublisher.rb',
@@ -21,7 +21,7 @@ class stocks{
     owner => 'root',
     group => 'root',
     mode => '755',
-    require => [Class['rabbitmq']]}
+    require => [Class['rabbitmq'],Class['gems']]}
     
   file{'colstats':
     name => '/usr/local/bin/colstats.rb',
@@ -29,5 +29,5 @@ class stocks{
     owner => 'root',
     group => 'root',
     mode => '755'
-    require => Class['cassandra']}
+    require => [Class['cassandra'],Class['gems']]}
 }
