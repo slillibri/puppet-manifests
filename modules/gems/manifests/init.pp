@@ -28,6 +28,6 @@ class gems{
     ensure => 'installed'}
   
   package{'log4r':
-    provider => 'gem'
+    provider => 'gem',
     ensure => 'installed'}
 }
