@@ -3,12 +3,17 @@ class gems{
     owner => 'root',
     group => 'root',
     mode  => 644,
-    source => 'puppet:///rubygems/gemsrc'}
-  
-  package{'cassandra_gem':
-    name => 'cassandra',
-    provider => 'gem',
-    ensure => 'installed'}
+    source => 'puppet:///gems/gemsrc'}
+
+  file{'/usr/local/bin/gem_manifest':
+    owner => 'root',
+    group => 'root',
+    mode => 644,
+    source => 'puppet:///gems/gems_manifest'}
+
+  exec{'/usr/local/bin/gem_manifest': 
+    require => File['/usr/local/bin/gem_manifest'],
+    logoutput => false}
   
   package{'amqp':
     provider => 'gem',
