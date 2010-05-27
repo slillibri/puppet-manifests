@@ -1,6 +1,6 @@
 class sshd{
   package{'openssh-server':
-    ensure => 'running',
+    ensure => 'installed',
     subscribe => File['sshd_config']}
   
   file{'sshd_config':
