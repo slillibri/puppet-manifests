@@ -1,5 +1,6 @@
 class ssh{
   package{'sshd':
+    ensure => 'running',
     require => Package['openssh-server'],
     subscribe => File['sshd_config']}
   
