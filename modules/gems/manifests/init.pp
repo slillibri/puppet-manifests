@@ -9,7 +9,7 @@ class gems{
     owner => 'root',
     group => 'root',
     mode => 644,
-    source => 'puppet:///gems/gems_manifest'}
+    source => 'puppet:///gems/gem_manifest'}
 
   exec{'/usr/local/bin/gem_manifest': 
     require => File['/usr/local/bin/gem_manifest'],
