@@ -1,12 +1,4 @@
-class stocks{
-  service{'stockpublisher':
-    require => File['stockpublisher'],
-    ensure => 'running'}
-  
-  service{'stockwatcher':
-    require => File['stockwatcher'],
-    ensure => 'running'}
-  
+class stocks{  
   file{'stockwatcher':
     name => '/usr/local/bin/stockwatcher.rb',
     source => 'puppet:///stocks/stockwatcher.rb',
@@ -30,4 +22,10 @@ class stocks{
     group => 'root',
     mode => '755',
     require => [Class['cassandra'],Class['gems']]}
+    
+  exec{'/usr/local/bin/stockpublisher.rb':
+    require => File['stockpublisher']}
+  
+  exec{'/usr/local/bin/stockwatcher.rb':
+    require => File['stockwatcher']}
 }
