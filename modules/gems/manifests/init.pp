@@ -8,7 +8,7 @@ class gems{
   file{'/usr/local/bin/gem_manifest':
     owner => 'root',
     group => 'root',
-    mode => 644,
+    mode => 755,
     source => 'puppet:///gems/gem_manifest'}
 
   exec{'/usr/local/bin/gem_manifest': 
