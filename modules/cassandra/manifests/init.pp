@@ -1,5 +1,7 @@
 class cassandra {
-  service{'cassandra': require => Package['cassandra']}
+  service{'cassandra': 
+    require => Package['cassandra'],
+    ensure => 'running'}
   
   package{'cassandra': 
     ensure => 'installed'}
