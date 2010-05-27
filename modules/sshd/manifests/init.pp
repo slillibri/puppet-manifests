@@ -10,5 +10,5 @@ class sshd{
     group => 'root',
     mode => '644',
     source => 'puppet:///sshd/sshd_config',
-    require => Package['openssh-server']}
+    require => Package['sshd']}
 }
