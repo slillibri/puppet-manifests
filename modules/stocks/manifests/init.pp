@@ -24,10 +24,12 @@ class stocks{
     require => [Class['cassandra'],Class['gems']]}
     
   exec{'/usr/local/bin/stockpublisher.rb':
+    path => '/bin:/usr/bin',
     unless => 'ps axf | grep -qs [s]tockpublisher',
     require => File['stockpublisher']}
   
   exec{'/usr/local/bin/stockwatcher.rb':
+    path => '/bin:/usr/bin',
     unless => 'ps axf | grep -qs [s]tockwatcher',
     require => File['stockwatcher']}
 }
