@@ -24,8 +24,14 @@ class stocks{
     require => [Class['cassandra'],Class['gems']]}
     
   exec{'/usr/local/bin/stockpublisher.rb':
+    kill_proc => 'stockpublisher',
     require => File['stockpublisher']}
   
   exec{'/usr/local/bin/stockwatcher.rb':
-    require => File['stockwatcher']}
+    kill_proc => 'stockwatcher',
+    require => File['stockwatcher'}
+
+  define kill_proc($proc) {    
+    exec{"ps axf | grep $proc | grep -v grep | awk {'print $1'} | xargs kill"}
+  }
 }
