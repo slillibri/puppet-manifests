@@ -4,7 +4,8 @@ class users{
     groups => ['scott','dialout','cdrom','floppy','audio','video','plugdev','adm','sudo']}
   
   file{'/home/scott/.ssh':
-    ensure => 'directory'}
+    ensure => 'directory',
+    require => User['scott']}
   
   file{'/home/scott/.ssh/authorized_keys':
     owner => 'scott',
