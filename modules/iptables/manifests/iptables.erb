@@ -1,0 +1,70 @@
+#!/bin/bash
+
+INET_IP=`/sbin/ifconfig eth0|grep "inet addr" | cut -d: -f2 |awk '{print $1}'`
+INET_IFACE="eth0"
+INET_BROADCAST=`/sbin/ifconfig eth0|grep "inet addr" | cut -d: -f3 |awk '{print $1}'`
+LO_IFACE="lo"
+LO_IP="127.0.0.1"
+
+echo "1" > /proc/sys/net/ipv4/ip_forward
+
+/sbin/iptables -P INPUT DROP
+/sbin/iptables -P OUTPUT DROP
+/sbin/iptables -P FORWARD DROP
+
+/sbin/iptables -N bad_tcp_packets
+
+/sbin/iptables -N allowed
+/sbin/iptables -N tcp_packets
+/sbin/iptables -N udp_packets
+/sbin/iptables -N icmp_packets
+
+/sbin/iptables -A bad_tcp_packets -p tcp --tcp-flags SYN,ACK SYN,ACK -m state --state NEW -j REJECT --reject-with tcp-reset 
+/sbin/iptables -A bad_tcp_packets -p tcp ! --syn -m state --state NEW -j LOG --log-prefix "New not syn:"
+/sbin/iptables -A bad_tcp_packets -p tcp ! --syn -m state --state NEW -j DROP
+
+/sbin/iptables -A allowed -p TCP --syn -j ACCEPT
+/sbin/iptables -A allowed -p TCP -m state --state ESTABLISHED,RELATED -j ACCEPT
+/sbin/iptables -A allowed -p TCP -j DROP
+
+<% if has_variable?("tcp_packets") then %>
+  <% tcp_packets.each do |rules| %>
+    /sbin/iptables -A tcp_packets -p TCP -s <%= rules['source'] | '0/0' %> --dport <%= rules['dport'] %> -j allowed
+  <% end %>
+<% end %>
+
+<% if has_variable?("udp_packets") then %>
+  <% udp_packets.each do |rules| %>
+    /sbin/iptables -A upd_packets -p UDP -s <%= rules['source'] | '0/0' %> --dport <%= rules['dport'] %> -j allowed
+  <% end %>
+<% end %>
+
+<% if has_variable("icmp_packets") then %>
+  <% icmp_packets.each do |rules| %>
+    /sbin/iptables -A icmp_packets -p ICMP -s <%= rules['source'] | '0/0' %> --icmp-type <%= rules['type'] %> -j ACCEPT
+  <% end %>
+<% end %>
+
+/sbin/iptables -A INPUT -p tcp -j bad_tcp_packets
+
+/sbin/iptables -A INPUT -p ALL -d $INET_IP -m state --state ESTABLISHED,RELATED -j ACCEPT
+/sbin/iptables -A INPUT -p TCP -i $INET_IFACE -j tcp_packets
+/sbin/iptables -A INPUT -p ALL -d $LO_IP -m state --state ESTABLISHED,RELATED -j ACCEPT
+/sbin/iptables -A INPUT -p TCP -i $LO_IFACE -j tcp_packets
+/sbin/iptables -A INPUT -p ICMP -i $INET_IFACE -j icmp_packets
+
+
+/sbin/iptables -A INPUT -m limit --limit 3/minute --limit-burst 3 -j LOG --log-level DEBUG --log-prefix "IPT INPUT packet died: "
+
+/sbin/iptables -A FORWARD -p tcp -j bad_tcp_packets
+
+/sbin/iptables -A FORWARD -m limit --limit 3/minute --limit-burst 3 -j LOG --log-level DEBUG --log-prefix "IPT FORWARD packet died: "
+
+/sbin/iptables -A OUTPUT -p tcp -j bad_tcp_packets
+
+/sbin/iptables -A OUTPUT -p ALL -s $LO_IP -j ACCEPT
+/sbin/iptables -A OUTPUT -p ALL -s $INET_IP -j ACCEPT
+
+/sbin/iptables -A OUTPUT -m limit --limit 3/minute --limit-burst 3 -j LOG --log-level DEBUG --log-prefix "IPT OUTPUT packet died: "
+
+/sbin/iptables -t nat -A POSTROUTING -o $INET_IFACE -j SNAT --to-source $INET_IP
