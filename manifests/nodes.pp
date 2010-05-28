@@ -13,11 +13,7 @@ node 'li91-20.members.linode.com' inherits 'basenode' {
 	include gems
 	include stocks
 	
-	$tcp_packets = [{'dport' => 22}, 
-	                {'source' => '127.0.0.1', 'dport' => '9160'},
-	                {'source' => '74.207.254.152', dport => '8139'}]
-  
-  $icmp_packet = [{'type' => '8'}, {'type' => '11'}]
+	$tcp_packets = ['0/0:22', '127.0.0.1:9160', '74.207.254.152:8139']
   
   include iptables
 }

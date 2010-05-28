@@ -29,7 +29,8 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
 
 <% if has_variable?("tcp_packets") then %>
   <% tcp_packets.each do |rules| %>
-    /sbin/iptables -A tcp_packets -p TCP -s <%= rules['source'] | '0/0' %> --dport <%= rules['dport'] %> -j allowed
+    <% (source,port) = rules.split(/:/) %>
+    /sbin/iptables -A tcp_packets -p TCP -s <%= source %> --dport <%= port %> -j allowed
   <% end %>
 <% end %>
 
