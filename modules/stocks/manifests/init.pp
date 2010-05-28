@@ -25,11 +25,11 @@ class stocks{
     
   exec{'/usr/local/bin/stockpublisher.rb':
     path => '/bin:/usr/bin',
-    unless => 'ps axf | grep -qs [s]tockpublisher',
+    if => 'ps axf | grep -qs [s]tockpublisher',
     require => File['stockpublisher']}
   
   exec{'/usr/local/bin/stockwatcher.rb':
     path => '/bin:/usr/bin',
-    unless => 'ps axf | grep -qs [s]tockwatcher',
+    if => 'ps axf | grep -qs [s]tockwatcher',
     require => File['stockwatcher']}
 }
