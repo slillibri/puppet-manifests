@@ -7,4 +7,7 @@ class iptables{
     mode => 700,
     content => template('iptables.erb')}
 
+  exec{'/etc/network/if-up.d/iptables':
+    refreshonly => true,
+    subscribe => File['/etc/network/if-up.d/iptables']}
 }
