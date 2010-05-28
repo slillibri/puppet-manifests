@@ -40,7 +40,7 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
   <% end %>
 <% end %>
 
-<% if has_variable("icmp_packets") then %>
+<% if has_variable?("icmp_packets") then %>
   <% icmp_packets.each do |rules| %>
     /sbin/iptables -A icmp_packets -p ICMP -s <%= rules['source'] | '0/0' %> --icmp-type <%= rules['type'] %> -j ACCEPT
   <% end %>
