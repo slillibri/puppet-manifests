@@ -4,6 +4,8 @@ node 'basenode' {
   include rsync
   include users
   include sshd
+  include postfix
+  include logwatch
 }
 
 node 'li91-20.members.linode.com' inherits 'basenode' {
