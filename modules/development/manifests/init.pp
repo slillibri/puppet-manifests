@@ -7,5 +7,5 @@ class development {
   package{"libssl-dev": ensure => installed}
   package{"autotools-dev": ensure => installed}
   package{"libreadline5-dev": ensure => installed}
-  package{"libmysqlclient15-dev": ensure => installed}
+  package{"libmysqlclient-dev": ensure => installed}
 }
