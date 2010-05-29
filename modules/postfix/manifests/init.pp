@@ -14,7 +14,7 @@ class postfix{
     
   file{'aliases':
     name => '/etc/aliases',
-    content => 'puppet:///postfix/aliases',
+    source => 'puppet:///postfix/aliases',
     require => Package['postfix'],
     notify => Exec['newaliases']}
   
