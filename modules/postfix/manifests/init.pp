@@ -9,11 +9,13 @@ class postfix{
   file{'main.cf':
     name => '/etc/postfix/main.cf',
     content => template('main.erb'),
+    require => Package['postfix'],
     notify => Service['postfix']}
     
   file{'aliases':
     name => '/etc/aliases',
     content => 'puppet:///postfix/aliases',
+    require => Package['postfix'],
     notify => Exec['newaliases']}
   
   exec{'newaliases':
