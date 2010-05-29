@@ -8,9 +8,13 @@ LO_IP="127.0.0.1"
 
 echo "1" > /proc/sys/net/ipv4/ip_forward
 
-/sbin/iptables -P INPUT DROP
-/sbin/iptables -P OUTPUT DROP
-/sbin/iptables -P FORWARD DROP
+## Set default policy to allow while setting up chains
+/sbin/iptables -P INPUT ALLOW
+/sbin/iptables -P OUTPUT ALLOW
+/sbin/iptables -P FORWARD ALLOW
+
+## Flush all chains
+/sbin/iptables -F
 
 /sbin/iptables -N bad_tcp_packets
 
@@ -71,3 +75,8 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
 /sbin/iptables -A OUTPUT -m limit --limit 3/minute --limit-burst 3 -j LOG --log-level DEBUG --log-prefix "IPT OUTPUT packet died: "
 
 /sbin/iptables -t nat -A POSTROUTING -o $INET_IFACE -j SNAT --to-source $INET_IP
+
+/sbin/iptables -P INPUT DROP
+/sbin/iptables -P OUTPUT DROP
+/sbin/iptables -P FORWARD DROP
+
