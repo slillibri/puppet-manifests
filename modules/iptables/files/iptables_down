@@ -1,0 +1,13 @@
+## Set default policy to allow while setting up chains
+/sbin/iptables -P INPUT ACCEPT
+/sbin/iptables -P OUTPUT ACCEPT
+/sbin/iptables -P FORWARD ACCEPT
+
+## Flush all chains
+/sbin/iptables -F
+
+/sbin/iptables -X bad_tcp_packets
+/sbin/iptables -X allowed
+/sbin/iptables -X tcp_packets
+/sbin/iptables -X udp_packets
+/sbin/iptables -X icmp_packets
