@@ -2,7 +2,7 @@ smtpd_banner = <%= fqdn %> ESMTP
 biff = no
 append_dot_mydomain = no
 readme_directory = no
-myhostname = li96-152.members.linode.com
+myhostname = <%= fqdn %>
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
 myorigin = /etc/mailname
