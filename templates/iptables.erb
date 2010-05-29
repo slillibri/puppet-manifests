@@ -1,8 +1,8 @@
 #!/bin/bash
 
-INET_IP=`/sbin/ifconfig eth0|grep "inet addr" | cut -d: -f2 |awk '{print $1}'`
+INET_IP=<%= ipaddress_eth0 %>
 INET_IFACE="eth0"
-INET_BROADCAST=`/sbin/ifconfig eth0|grep "inet addr" | cut -d: -f3 |awk '{print $1}'`
+
 LO_IFACE="lo"
 LO_IP="127.0.0.1"
 
