@@ -7,12 +7,18 @@ class postfix{
     subscribe => File['main.cf']}
   
   file{'main.cf':
+    owner => 'root',
+    group => 'root',
+    mode => 644,
     name => '/etc/postfix/main.cf',
     content => template('main.erb'),
     require => Package['postfix'],
     notify => Service['postfix']}
     
   file{'aliases':
+    owner => 'root',
+    group => 'root',
+    mode => 644,
     name => '/etc/aliases',
     source => 'puppet:///postfix/aliases',
     require => Package['postfix'],
