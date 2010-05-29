@@ -6,6 +6,7 @@ require 'mq'
 require 'pp'
 require 'net/http'
 require 'time'
+require 'date'
 
 class StockPublisher
   trap("INT") do
