@@ -9,9 +9,9 @@ LO_IP="127.0.0.1"
 echo "1" > /proc/sys/net/ipv4/ip_forward
 
 ## Set default policy to allow while setting up chains
-/sbin/iptables -P INPUT ALLOW
-/sbin/iptables -P OUTPUT ALLOW
-/sbin/iptables -P FORWARD ALLOW
+/sbin/iptables -P INPUT ACCEPT
+/sbin/iptables -P OUTPUT ACCEPT
+/sbin/iptables -P FORWARD ACCEPT
 
 ## Flush all chains
 /sbin/iptables -F
