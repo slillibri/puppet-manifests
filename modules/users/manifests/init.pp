@@ -10,15 +10,15 @@ class users{
     require => User['scott'],
     owner => 'scott',
     group  => 'scott'}
-    
+  
   file{'/home/scott/.ssh':
     ensure => 'directory',
-    require => User['scott']}
+    require => File['/home/scott']}
   
   file{'/home/scott/.ssh/authorized_keys':
     owner => 'scott',
     group => 'scott',
     mode => '600',
     source => 'puppet:///users/scott_keys',
-    require => [User['scott'],File['/home/scott/.ssh']]}
+    require => File['/home/scott/.ssh']}
 }
