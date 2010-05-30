@@ -5,7 +5,6 @@ node 'basenode' {
   include users
   include sshd
   include postfix
-  include logwatch
   include hostname
 }
 
@@ -14,6 +13,7 @@ node 'li91-20.members.linode.com' inherits 'basenode' {
   $icmp_packets = ['0/0:8', '0/0:11']
   $logwatch_mailto = 'scott.lillibridge@gmail.com'
 
+  include logwatch
 	include cassandra
 	include imagemagick
 	include gems  
