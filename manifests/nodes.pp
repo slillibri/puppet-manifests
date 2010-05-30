@@ -9,4 +9,5 @@ node 'li91-20.members.linode.com' {
 	include gems  
   include iptables
   include rabbitmq
+  include stocks
 }
