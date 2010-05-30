@@ -6,6 +6,7 @@ node 'basenode' {
   include sshd
   include postfix
   include logwatch
+  include hostname
 }
 
 node 'li91-20.members.linode.com' inherits 'basenode' {
