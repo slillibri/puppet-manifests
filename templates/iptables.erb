@@ -53,6 +53,7 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
 <% end %>
 
 /sbin/iptables -A tcp_packets -p TCP -s 127.0.0.1 -d 127.0.0.1 -j allowed
+/sbin/iptables -A tcp_packets -p TCP -s <%= ipaddress_eth0 %> -d <%= ipaddress_eth0 %> -j allowed
 
 /sbin/iptables -A INPUT -p tcp -j bad_tcp_packets
 
