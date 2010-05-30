@@ -8,4 +8,5 @@ node 'li91-20.members.linode.com' {
 	include imagemagick
 	include gems  
   include iptables
+  include rabbitmqs
 }
