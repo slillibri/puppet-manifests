@@ -52,6 +52,8 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
   <% end %>
 <% end %>
 
+/sbin/iptables -A tcp_packets -p TCP -s 127.0.0.1 -d 127.0.0.1 -j allowed
+
 /sbin/iptables -A INPUT -p tcp -j bad_tcp_packets
 
 /sbin/iptables -A INPUT -p ALL -d $INET_IP -m state --state ESTABLISHED,RELATED -j ACCEPT
