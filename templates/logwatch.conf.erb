@@ -1,0 +1,11 @@
+LogDir = /var/log
+TmpDir = /var/cache/logwatch
+Output = stdout
+Format = text
+Encode = none
+MailTo = <%= logwatch_mailto %>
+MailFrom = Logwatch
+Range = yesterday
+Detail = Low 
+Service = All
+mailer = "/usr/sbin/sendmail -t"
