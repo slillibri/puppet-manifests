@@ -10,7 +10,6 @@ node 'basenode' {
 
 node 'li91-20.members.linode.com' inherits 'basenode' {
 	include cassandra
-	include rabbitmq
 	include imagemagick
 	include gems
 	include stocks
