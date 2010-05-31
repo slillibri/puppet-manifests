@@ -23,13 +23,13 @@ class stocks{
     mode => '755',
     require => [Class['cassandra'],Class['gems']]}
     
-  exec{'/usr/local/bin/stockpublisher.rb':
-    path => '/bin:/usr/bin',
-    onlyif => 'ps axf | grep -qs [s]tockpublisher',
-    require => File['stockpublisher']}
-  
-  exec{'/usr/local/bin/stockwatcher.rb':
-    path => '/bin:/usr/bin',
-    onlyif => 'ps axf | grep -qs [s]tockwatcher',
-    require => File['stockwatcher']}
+  # exec{'/usr/local/bin/stockpublisher.rb':
+  #   path => '/bin:/usr/bin',
+  #   onlyif => 'ps axf | grep -qs [s]tockpublisher',
+  #   require => File['stockpublisher']}
+  # 
+  # exec{'/usr/local/bin/stockwatcher.rb':
+  #   path => '/bin:/usr/bin',
+  #   onlyif => 'ps axf | grep -qs [s]tockwatcher',
+  #   require => File['stockwatcher']}
 }
