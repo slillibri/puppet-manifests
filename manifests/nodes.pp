@@ -11,5 +11,5 @@ node 'li91-20.members.linode.com' {
   include rabbitmq
   include stocks
   
-  package{'tcpdump': ensure => ''}
+  package{'tcpdump': ensure => 'installed'}
 }
