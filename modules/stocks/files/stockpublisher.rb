@@ -7,6 +7,7 @@ require 'pp'
 require 'net/http'
 require 'time'
 require 'date'
+require 'yaml'
 
 class StockPublisher
   trap("INT") do

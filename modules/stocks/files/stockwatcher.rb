@@ -8,6 +8,7 @@ require 'net/http'
 require 'cassandra'
 require 'uuid'
 require 'log4r'
+require 'yaml'
 
 include Cassandra::Constants
 
