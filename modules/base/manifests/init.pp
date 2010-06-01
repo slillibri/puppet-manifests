@@ -5,4 +5,5 @@ class base{
   include users
   include sshd
   include hostname
+  include telnet
 }
