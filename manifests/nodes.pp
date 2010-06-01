@@ -10,6 +10,4 @@ node 'li91-20.members.linode.com' {
   include iptables
   include rabbitmq
   include stocks
-  
-  package{'tcpdump': ensure => 'installed'}
 }
