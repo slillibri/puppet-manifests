@@ -21,12 +21,12 @@ class gems{
 
   define gems::gem_install($require) {
     if $require
-      package{"${name}":
+      package{$name:
         provider => 'gem',
         ensure => 'installed',
         require => $require}
     else
-      package{"${name}":
+      package{$name:
       provider => 'gem',
       ensure => 'installed'}
     end
