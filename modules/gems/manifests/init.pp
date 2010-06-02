@@ -20,12 +20,12 @@ class gems{
     logoutput => false}
 }
 
-define gem_install($require){
-  if $require {
+define gem_install($required){
+  if $required {
     package{$name:
       provider => 'gem',
       ensure => 'installed',
-      require => $require}
+      require => $required}
   } else {
     package{$name:
       provider => 'gem',
