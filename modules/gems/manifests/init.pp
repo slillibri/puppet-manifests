@@ -21,13 +21,14 @@ class gems{
 }
 
 define gem_install($require){
-  if $require
+  if $require {
     package{$name:
       provider => 'gem',
       ensure => 'installed',
       require => $require}
-  else
+  } else {
     package{$name:
       provider => 'gem',
       ensure => 'installed'}
+  }
 }
