@@ -1,4 +1,5 @@
 class development {
+  package{"build-essential": ensure => installed}
   package{"dpkg-dev": ensure => installed}
   package{"fakeroot": ensure => installed}
   package{"debhelper": ensure => installed}
