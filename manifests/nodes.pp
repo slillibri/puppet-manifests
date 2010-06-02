@@ -11,7 +11,13 @@ node 'li91-20.members.linode.com' {
   include rabbitmq
   include stocks
   
-  gems::gem_install{'amqp':}
+  define gem_install(){
+    package{$name:
+      provider => 'gem',
+      ensure => 'installed'}
+  }
+  
+  gem_install{'amqp':}
 #  gems::gem_install{'gruff': require => Package['rmagick']}
 #  gems::gem_install{'rmagick': require => Class['imagemagick']}
 #  gems::gem_install{'uuid':}
