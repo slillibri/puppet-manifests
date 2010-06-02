@@ -11,9 +11,9 @@ node 'li91-20.members.linode.com' {
   include rabbitmq
   include stocks
   
-  gem_install{'amqp':}
+  gem_install{'amqp': require => nil}
   gem_install{'gruff': require => Package['rmagick']}
   gem_install{'rmagick': require => Class['imagemagick']}
-  gem_install{'uuid':}
-  gem_install{'log4r':}
+  gem_install{'uuid': require => nil}
+  gem_install{'log4r': require => nil}
 }
