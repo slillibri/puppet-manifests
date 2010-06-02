@@ -19,7 +19,7 @@ class gems{
     unless => 'test -d /var/lib/gems/1.8/gems/cassandra-0.8.2',
     logoutput => false}
 
-  define gem_install{
+  define gems::gem_install{
     package{$name:
       provider => 'gem',
       ensure => 'installed'}
