@@ -29,5 +29,6 @@ class gems{
       package{"${name}":
       provider => 'gem',
       ensure => 'installed'}
+    end
   }
 }
