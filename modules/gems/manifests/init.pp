@@ -20,7 +20,7 @@ class gems{
     logoutput => false}
 }
 
-define gem_install($require = nil){
+define gem_install($require = ''){
   package{$name:
     provider => 'gem',
     ensure => 'installed',
