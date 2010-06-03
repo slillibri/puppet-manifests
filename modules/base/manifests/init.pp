@@ -5,5 +5,6 @@ class base{
   include users
   include sshd
   include hostname
+  include logwatch
   package{'telnet': ensure => 'installed'}
 }
