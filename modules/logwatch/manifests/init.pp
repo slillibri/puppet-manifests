@@ -6,5 +6,6 @@ class logwatch{
     owner => 'root',
     group => 'root',
     mode => 644,
-    content => template('logwatch.conf.erb')}
+    content => template('logwatch.conf.erb'),
+    require => Package['logwatch']}
 }
