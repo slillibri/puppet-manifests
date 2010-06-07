@@ -4,6 +4,7 @@ node 'li91-20.members.linode.com' {
   $logwatch_mailto = 'scott.lillibridge@gmail.com'
   
   include base
+  include iptables
   # include cassandra
   # include imagemagick
   # include gems  
