@@ -5,12 +5,12 @@ node 'li91-20.members.linode.com' {
   
   include base
   include iptables
+  include postfix
   # include cassandra
   # include imagemagick
   # include gems  
-  #   include iptables
-  #   include rabbitmq
-  #   include stocks
+  # include rabbitmq
+  # include stocks
   
   # gem_install{'amqp': required => Class['development']}
   # gem_install{'gruff': required => Package['rmagick']}
