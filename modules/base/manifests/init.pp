@@ -12,7 +12,7 @@ class base{
     path => '/usr/local/bin/lsconfig',
     owner => 'root',
     group => 'root',
-    mode => 511,
+    mode => 555,
     ensure => 'present',
     source => 'puppet:///base/lsconfig'}
 }
