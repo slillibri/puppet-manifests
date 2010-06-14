@@ -7,4 +7,12 @@ class base{
   include hostname
   include logwatch
   package{'telnet': ensure => 'installed'}
+  
+  file{'lsconfig':
+    path => '/usr/local/bin/lsconfig',
+    owner => 'root',
+    group => 'root',
+    mode => 511,
+    ensure => 'present',
+    source => 'puppet:///base/lsconfig'}
 }
