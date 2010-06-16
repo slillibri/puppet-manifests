@@ -6,6 +6,8 @@ class base{
   include sshd
   include hostname
   include logwatch
+  
+  package{'fail2ban': ensure => 'installed'}
   package{'telnet': ensure => 'installed'}
   
   file{'lsconfig':
