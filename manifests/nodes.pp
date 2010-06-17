@@ -6,6 +6,7 @@ node 'li91-20.members.linode.com' {
   include base
   include iptables
   include postfix
+  include opsview
   # include cassandra
   # include imagemagick
   # include gems  
