@@ -6,16 +6,15 @@ node 'li91-20.members.linode.com' {
   include base
   include iptables
   include postfix
-  include opsview
-  # include cassandra
-  # include imagemagick
-  # include gems  
-  # include rabbitmq
-  # include stocks
+  include cassandra
+  include imagemagick
+  include gems  
+  include rabbitmq
+  include stocks
   
-  # gem_install{'amqp': required => Class['development']}
-  # gem_install{'gruff': required => Package['rmagick']}
-  # gem_install{'rmagick': required => Class['imagemagick']}
-  # gem_install{'uuid': required => false}
-  # gem_install{'log4r': required => false}
+  gem_install{'amqp': required => Class['development']}
+  gem_install{'gruff': required => Package['rmagick']}
+  gem_install{'rmagick': required => Class['imagemagick']}
+  gem_install{'uuid': required => false}
+  gem_install{'log4r': required => false}
 }
