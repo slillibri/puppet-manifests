@@ -6,8 +6,8 @@ class base{
   include sshd
   include hostname
   include logwatch
+  include fail2ban
   
-  package{'fail2ban': ensure => 'installed'}
   package{'telnet': ensure => 'installed'}
   
   file{'lsconfig':
@@ -17,4 +17,12 @@ class base{
     mode => 555,
     ensure => 'present',
     source => 'puppet:///base/lsconfig'}
+    
+  file{'apt-sources':
+    path => '/etc/apt/sources.list',
+    owner => 'root',
+    group => 'root',
+    mode => '644',
+    ensure => 'present',
+    source => 'puppet:///base/apt-sources'}
 }
