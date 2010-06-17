@@ -12,5 +12,6 @@ class fail2ban {
     group => 'root',
     mode => 644,
     require => Package['fail2ban'],
-    notify => Service['fail2ban']}
+    notify => Service['fail2ban'],
+    source => 'puppet:///fail2ban/jail.conf'}
 }
