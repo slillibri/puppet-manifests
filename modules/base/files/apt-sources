@@ -4,4 +4,4 @@ deb-src http://www.apache.org/dist/cassandra/debian unstable main
 deb-src http://ftp.us.debian.org/debian testing main contrib non-free
 deb http://ftp.us.debian.org/debian testing main contrib non-free
 deb http://security.debian.org/ testing/updates main contrib
-deb http://downloads.opsera.com/opsview-community/latest/apt testing main
+deb http://downloads.opsera.com/opsview-community/latest/apt lenny main
