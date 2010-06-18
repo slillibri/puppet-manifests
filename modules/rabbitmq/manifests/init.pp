@@ -1,5 +1,5 @@
 class rabbitmq{
-  service{'rabbitmq':
+  service{'rabbitmq-server':
     require => Package['rabbitmq-server'],
     ensure => 'running'}
     
