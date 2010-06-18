@@ -25,4 +25,9 @@ class base{
     mode => '644',
     ensure => 'present',
     source => 'puppet:///base/apt-sources'}
+  
+  exec{'update':
+    command => '/usr/bin/apt-get update',
+    subscribe => 'apt-sources',
+    refreshonly => true}
 }
