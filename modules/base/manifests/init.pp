@@ -28,6 +28,6 @@ class base{
   
   exec{'update':
     command => '/usr/bin/apt-get update',
-    subscribe => 'apt-sources',
+    subscribe => File['apt-sources'],
     refreshonly => true}
 }
