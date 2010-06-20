@@ -11,6 +11,8 @@ node 'li91-20.members.linode.com' {
   include gems  
   include rabbitmq
   include stocks
+  include nagios
+  include nagios::target
   
   gem_install{'amqp': required => Class['development']}
   gem_install{'gruff': required => Package['rmagick']}
