@@ -12,7 +12,7 @@ class cassandra {
     owner => 'root',
     group => 'root',
     mode => '644',
-    source => 'puppet:///cassandra/storage-conf.xml',
+    source => 'puppet:///modules/cassandra/storage-conf.xml',
     require => Package['cassandra'],
     notify => Service['cassandra']}
 }

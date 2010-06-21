@@ -20,7 +20,7 @@ class postfix{
     group => 'root',
     mode => 644,
     name => '/etc/aliases',
-    source => 'puppet:///postfix/aliases',
+    source => 'puppet:///modules/postfix/aliases',
     require => Package['postfix'],
     notify => Exec['newaliases']}
   

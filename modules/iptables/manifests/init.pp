@@ -11,7 +11,7 @@ class iptables{
     owner => 'root',
     group => 'root',
     mode => 700,
-    source => 'puppet:///iptables/iptables_down'}
+    source => 'puppet:///modules/iptables/iptables_down'}
 
   exec{'/etc/network/if-up.d/iptables':
     refreshonly => true,

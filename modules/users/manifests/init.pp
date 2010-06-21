@@ -19,6 +19,6 @@ class users{
     owner => 'scott',
     group => 'scott',
     mode => '600',
-    source => 'puppet:///users/scott_keys',
+    source => 'puppet:///moudles/users/scott_keys',
     require => File['/home/scott/.ssh']}
 }

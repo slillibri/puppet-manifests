@@ -5,13 +5,13 @@ class gems{
     owner => 'root',
     group => 'root',
     mode  => 644,
-    source => 'puppet:///gems/gemsrc'}
+    source => 'puppet:///modules/gems/gemsrc'}
 
   file{'/usr/local/bin/gem_manifest':
     owner => 'root',
     group => 'root',
     mode => 755,
-    source => 'puppet:///gems/gem_manifest'}
+    source => 'puppet:///modules/gems/gem_manifest'}
 
   exec{'/usr/local/bin/gem_manifest': 
     path => '/bin:/usr/bin',

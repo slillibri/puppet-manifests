@@ -11,6 +11,6 @@ class sshd{
     owner => 'root',
     group => 'root',
     mode => '644',
-    source => 'puppet:///sshd/sshd_config',
+    source => 'puppet:///modules/sshd/sshd_config',
     notify => Service['ssh']}
 }

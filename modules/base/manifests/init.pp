@@ -16,7 +16,7 @@ class base{
     group => 'root',
     mode => 555,
     ensure => 'present',
-    source => 'puppet:///base/lsconfig'}
+    source => 'puppet:///modules/base/lsconfig'}
     
   file{'apt-sources':
     path => '/etc/apt/sources.list',
@@ -24,7 +24,7 @@ class base{
     group => 'root',
     mode => '644',
     ensure => 'present',
-    source => 'puppet:///base/apt-sources'}
+    source => 'puppet:///modules/base/apt-sources'}
   
   exec{'update':
     command => '/usr/bin/apt-get update',
