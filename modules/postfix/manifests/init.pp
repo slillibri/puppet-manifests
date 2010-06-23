@@ -3,8 +3,7 @@ class postfix{
     ensure => 'installed'}
   
   service{'postfix':
-    require => Package['postfix'],
-    subscribe => File['main.cf']}
+    require => Package['postfix']}
   
   file{'main.cf':
     owner => 'root',

@@ -39,7 +39,6 @@ class nagios {
       check_command => 'check_ping',
       use => 'generic-service',
       target => '/etc/nagios3/nagios_service.cfg',
-      host_name => "$fqdn"}
-    
+      host_name => "$fqdn"}    
   }
 }

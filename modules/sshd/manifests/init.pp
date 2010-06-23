@@ -14,10 +14,10 @@ class sshd{
     source => 'puppet:///modules/sshd/sshd_config',
     notify => Service['ssh']}
 
-    @@nagios_service{"check_ssh_$hostname":
-      check_command => 'check_ssh',
-      use => 'generic-service',
-      target => '/etc/nagios3/nagios_service.cfg',
-      service_description => 'Check SSH',
-      host_name => "$fqdn"}
+  @@nagios_service{"check_ssh_$hostname":
+    check_command => 'check_ssh',
+    use => 'generic-service',
+    target => '/etc/nagios3/nagios_service.cfg',
+    service_description => 'Check SSH',
+    host_name => "$fqdn"}
 }

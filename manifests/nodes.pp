@@ -8,7 +8,7 @@ node 'li91-20.members.linode.com' {
   include postfix
   include cassandra
   include imagemagick
-  include gems  
+  include gems
   include rabbitmq
   include stocks
   include nagios
