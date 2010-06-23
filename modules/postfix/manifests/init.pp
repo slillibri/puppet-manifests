@@ -28,4 +28,11 @@ class postfix{
     path => '/bin:/usr/bin',
     subscribe => File['aliases'],
     refreshonly => true}
+    
+  @@nagios_service{"check_smtp_$fqdn":
+    check_command => 'check_smtp',
+    use => 'generic-serivce',
+    target => '/etc/nagios3/nagios_service.cfg',
+    service_description => 'SMTP',
+    host_name => "$fqdn"}
 }
