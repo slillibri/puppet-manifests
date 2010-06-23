@@ -61,6 +61,7 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
 /sbin/iptables -A INPUT -p TCP -i $INET_IFACE -j tcp_packets
 /sbin/iptables -A INPUT -p ALL -d $LO_IP -m state --state ESTABLISHED,RELATED -j ACCEPT
 /sbin/iptables -A INPUT -p TCP -i $LO_IFACE -j tcp_packets
+/sbin/iptables -A INPUT -p ICMP -i $LO_IFACE -j icmp_packets
 /sbin/iptables -A INPUT -p ICMP -i $INET_IFACE -j icmp_packets
 
 
