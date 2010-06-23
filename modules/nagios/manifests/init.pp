@@ -7,8 +7,14 @@ class nagios {
     alias  => 'nagios',
     hasstatus => true,
     hasrestart => true,
-    require => Package['nagios3']}
-    
+    require => Package['nagios3'],
+    subscribe => [File['nagios.cfg'],Class['target']]}
+  
+  
+  file{'nagios.cfg':
+    path  => '/etc/nagios3/nagios.cfg',
+    owner => 'root', group => 'root', mode => 644,
+    source => 'puppet:///modules/nagios/nagios.cfg'}
   
   Nagios_host <<||>>
   Nagios_service <<||>>
