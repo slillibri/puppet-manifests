@@ -23,4 +23,5 @@ node 'li91-20.members.linode.com' {
 
 node 'li96-152.members.linode.com' {
   include nagios::target
+  include sshd
 }
