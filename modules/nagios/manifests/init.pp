@@ -28,7 +28,8 @@ class nagios {
       statusmap_image => "base/$operatingsystem.gd2"}
       
     @@nagios_service{"check_ping_$hostname":
-      use => 'check_ping',
+      check_command => 'check_ping',
+      use => 'generic-service',
       host_name => "$fqdn"}
   }
 }
