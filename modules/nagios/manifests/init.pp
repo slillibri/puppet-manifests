@@ -39,6 +39,7 @@ class nagios {
       check_command => 'check_ssh',
       use => 'generic-service',
       target => '/etc/nagios3/nagios_service.cfg',
+      service_description => 'Check SSH',
       host_name => "$fqdn"}
   }
 }
