@@ -41,11 +41,5 @@ class nagios {
       target => '/etc/nagios3/nagios_service.cfg',
       host_name => "$fqdn"}
     
-    @@nagios_service{"check_ssh_$hostname":
-      check_command => 'check_ssh',
-      use => 'generic-service',
-      target => '/etc/nagios3/nagios_service.cfg',
-      service_description => 'Check SSH',
-      host_name => "$fqdn"}
   }
 }
