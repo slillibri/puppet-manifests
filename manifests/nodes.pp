@@ -20,3 +20,7 @@ node 'li91-20.members.linode.com' {
   gem_install{'uuid': required => false}
   gem_install{'log4r': required => false}
 }
+
+node 'li96-152.members.linode.com' {
+  include nagios::target
+}
