@@ -1,0 +1,13 @@
+server {
+	server_name  localhost;
+	log_format	main	'$remote_addr - $remote_user $status "$request" $geoip_country_code';
+	access_log  /var/log/nginx/localhost.access.log main;
+	add_header X-Country-Code $geoip_country_name;
+	add_header X-GeoIP-Region $geoip_region;
+	add_header X-GeoIP-City   $geoip_city;
+	add_header X-GeoIP-Lat-Long "$geoip_latitude $geoip_longitude";
+	location / {
+		root   /var/www;
+		index  index.html index.htm;
+	}
+}
