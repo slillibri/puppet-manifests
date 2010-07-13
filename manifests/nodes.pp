@@ -14,6 +14,7 @@ node 'li91-20.members.linode.com' {
   include nagios
   include nagios::target
   
+  include nginx
   include nginx::geo_site
   
   gem_install{'amqp': required => Class['development']}

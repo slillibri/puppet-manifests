@@ -1,3 +1,7 @@
+class nginx{
+  
+}
+
 class nginx::base{
   package{'nginx':
     ensure => 'installed'}
