@@ -1,7 +1,3 @@
-class nginx{
-  
-}
-
 class nginx::base{
   package{'nginx':
     ensure => 'installed'}
@@ -23,7 +19,7 @@ class nginx::base{
     require => Package['nginx']}
 }
 
-class geoip::geoip inherits nginx::base{
+class nginx::geoip inherits nginx::base{
     file{'geoip':
       path => '/etc/nginx/conf.d/geoip.conf',
       owner => 'root', group => 'root', mode => 644,
