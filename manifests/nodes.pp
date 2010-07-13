@@ -14,6 +14,8 @@ node 'li91-20.members.linode.com' {
   include nagios
   include nagios::target
   
+  include nginx::geo_site
+  
   gem_install{'amqp': required => Class['development']}
   gem_install{'gruff': required => Package['rmagick']}
   gem_install{'rmagick': required => Class['imagemagick']}
