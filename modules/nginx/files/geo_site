@@ -1,5 +1,6 @@
 server {
 	server_name  localhost;
+	listen 8081;
 	log_format	main	'$remote_addr - $remote_user $status "$request" $geoip_country_code';
 	access_log  /var/log/nginx/localhost.access.log main;
 	add_header X-Country-Code $geoip_country_name;

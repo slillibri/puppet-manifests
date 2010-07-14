@@ -1,5 +1,6 @@
 server {
 	server_name  localhost;
+	listen 8081;
 	location / {
 		root   /var/www;
 		index  index.html index.htm;
