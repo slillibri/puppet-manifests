@@ -43,7 +43,7 @@ class nginx::geoip inherits nginx::base{
     ##How do I add the geo conf in sites-enabled? Or add a seperate site??
     
     file{'geo_site':
-      path => '/etc/nginx/sites-available/geo_site',
+      path => '/etc/nginx/sites-enabled/geo_site',
       owner => 'root', group => 'root', mode => 644,
       source => 'puppet:///modules/nginx/geo_site',
       require => Package['nginx']}
