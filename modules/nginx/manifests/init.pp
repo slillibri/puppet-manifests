@@ -24,8 +24,7 @@ class nginx::geoip inherits nginx::base{
       path => '/etc/nginx/conf.d/geoip.conf',
       owner => 'root', group => 'root', mode => 644,
       source => 'puppet:///modules/nginx/geoip.conf',
-      require => Package['nginx'],
-      notify => Package['nginx']}
+      require => Package['nginx']}
     
     file{'geoip_country':
       path => '/etc/nginx/conf.d/GeoIP.dat',
