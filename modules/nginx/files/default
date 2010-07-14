@@ -1,6 +1,5 @@
 server {
 	server_name  localhost;
-	access_log  /var/log/nginx/localhost.access.log main;
 	location / {
 		root   /var/www;
 		index  index.html index.htm;
