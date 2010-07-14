@@ -17,6 +17,14 @@ class nginx::base{
     owner => 'root', group => 'root', mode => 644,
     source => 'puppet:///modules/nginx/default',
     require => Package['nginx']}
+  
+  @@nagios_service{"check_web_$hostname":
+    check_command => 'check_http',
+    use => 'generic-service',
+    target => '/etc/nagios3/nagios_service.cfg',
+    service_description => 'Check web',
+    host_name => "$fqdn",
+    port => '8081'}
 }
 
 class nginx::geoip inherits nginx::base{
