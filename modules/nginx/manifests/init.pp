@@ -21,7 +21,7 @@ class nginx::base{
   @@nagios_service{"check_web_$hostname":
     check_command => 'check_http',
     use => 'generic-service',
-    target => '/etc/nagios3/nagios_service.cfg',
+    target => "/etc/nagios3/conf.d/$fqdn",
     service_description => 'Check web',
     host_name => "$fqdn"}
 }
