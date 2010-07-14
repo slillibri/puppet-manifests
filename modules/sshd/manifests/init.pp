@@ -17,7 +17,7 @@ class sshd{
   @@nagios_service{"check_ssh_$hostname":
     check_command => 'check_ssh',
     use => 'generic-service',
-    target => "/etc/nagios3/conf.d/$fqdn",
+    target => "/etc/nagios3/conf.d/$hostname_nagios2.cfg",
     service_description => 'Check SSH',
     host_name => "$fqdn"}
 }
