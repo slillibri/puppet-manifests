@@ -23,8 +23,7 @@ class nginx::base{
     use => 'generic-service',
     target => '/etc/nagios3/nagios_service.cfg',
     service_description => 'Check web',
-    host_name => "$fqdn",
-    port => '8081'}
+    host_name => "$fqdn"}
 }
 
 class nginx::geoip inherits nginx::base{
