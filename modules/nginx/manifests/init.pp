@@ -45,6 +45,6 @@ class nginx::geoip inherits nginx::base{
     file{'geo_site':
       path => '/etc/nginx/sites-available/geo_site',
       owner => 'root', group => 'root', mode => 644,
-      source => 'puppet://modules/nginx/geo_site',
+      source => 'puppet:///modules/nginx/geo_site',
       require => Package['nginx']}
 }
