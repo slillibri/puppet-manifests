@@ -24,6 +24,11 @@ node 'li91-20.members.linode.com' {
 }
 
 node 'li96-152.members.linode.com' {
+  $tcp_packets = ['0/0:22', '74.207.249.20:8140', '74.207.254.152:8140', '127.0.0.1:8140', '74.207.249.20:5666', '0/0:80', '0/0:3128']
+  $icmp_packets = ['0/0:8', '0/0:11']
+  
   include nagios::target
   include sshd
+  include squid
+  include iptables
 }
