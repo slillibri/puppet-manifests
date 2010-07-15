@@ -33,5 +33,6 @@ class postfix{
     use => 'generic-service',
     target => '/etc/nagios3/$hostname.cfg',
     service_description => 'SMTP',
-    host_name => "$fqdn"}
+    host_name => "$fqdn",
+    event_handler => '/etc/init.d/postfix restart'}
 }
