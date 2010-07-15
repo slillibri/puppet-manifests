@@ -22,4 +22,3 @@ nagios ALL = NOPASSWD: /etc/init.d/postfix start
 # it further down)
 %sudo ALL=(ALL) ALL
 
-#includedir /etc/sudoers.d
