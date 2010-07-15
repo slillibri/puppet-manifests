@@ -6,7 +6,7 @@ class sudo {
           owner => "root",
           group => "root",
           mode => 440,
-          content => template("sudoers", "$hostname")
+          content => template("sudoers", "$hostname"),
           require => Package["sudo"]
         }
         
