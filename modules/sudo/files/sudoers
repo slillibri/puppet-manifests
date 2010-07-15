@@ -15,12 +15,11 @@ Defaults	env_reset
 
 # User privilege specification
 root	ALL=(ALL) ALL
-nagios ALL = NOPASSWD: /etc/init.d/postfix start
 
 # Allow members of group sudo to not need a password
 # (Note that later entries override this, so you might need to move
 # it further down)
 %sudo ALL=(ALL) ALL
 #
-#includedir /etc/sudoers.d
+includedir /etc/sudoers.d
 
