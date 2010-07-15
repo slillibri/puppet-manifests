@@ -34,5 +34,10 @@ class postfix{
     target => "/etc/nagios3/conf.d/$hostname.cfg",
     service_description => 'SMTP',
     host_name => "$fqdn",
-    event_handler => '/etc/init.d/postfix restart'}
+    event_handler => 'restart_postfix'}
+  
+  @@nagios_command{"restart_postfix":
+    target => '/etc/nagios3/nagios_commands.cfg',
+    command_line => '/etc/init.d/postfix restart',
+    command_name => 'restart_postfix'}
 }
