@@ -19,6 +19,7 @@ class nagios {
   Nagios_host <<||>>
   Nagios_service <<||>>
   Nagios_hostextinfo <<||>>
+  Nagios_command <<||>>
   
   class target {
     @@nagios_host{$fqdn:
