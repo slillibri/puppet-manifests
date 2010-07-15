@@ -31,7 +31,7 @@ class postfix{
   @@nagios_service{"check_smtp_$fqdn":
     check_command => 'check_smtp',
     use => 'generic-service',
-    target => '/etc/nagios3/$hostname.cfg',
+    target => "/etc/nagios3/conf.d/$hostname.cfg",
     service_description => 'SMTP',
     host_name => "$fqdn",
     event_handler => '/etc/init.d/postfix restart'}
