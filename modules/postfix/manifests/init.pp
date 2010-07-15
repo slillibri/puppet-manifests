@@ -38,6 +38,6 @@ class postfix{
   
   @@nagios_command{"restart_postfix":
     target => '/etc/nagios3/nagios_commands.cfg',
-    command_line => 'sudo /etc/init.d/postfix restart',
+    command_line => 'sudo /etc/init.d/postfix start',
     command_name => 'restart_postfix'}
 }
