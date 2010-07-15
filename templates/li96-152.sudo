@@ -1,1 +1,1 @@
-nagios ALL = NOPASSWD: /etc/init.d/squid3 start, /etc/init.d/postfix start
+nagios ALL = NOPASSWD: "/etc/init.d/squid3 start", "/etc/init.d/postfix start"
