@@ -31,5 +31,4 @@ node 'li96-152.members.linode.com' {
   include sshd
   include squid
   include iptables
-  include sudo
 }
