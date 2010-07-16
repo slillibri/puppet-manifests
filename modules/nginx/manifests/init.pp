@@ -18,12 +18,12 @@ class nginx::base{
     source => 'puppet:///modules/nginx/default',
     require => Package['nginx']}
   
-  # @@nagios_service{"check_web_$hostname":
-  #   check_command => 'check_http',
-  #   use => 'generic-service',
-  #   target => "/etc/nagios3/conf.d/$hostname.cfg",
-  #   service_description => 'Check web',
-  #   host_name => "$fqdn"}
+  @@nagios_service{"check_web_$hostname":
+    check_command => 'check_http',
+    use => 'generic-service',
+    target => "/etc/nagios3/conf.d/$hostname.cfg",
+    service_description => 'Check web',
+    host_name => "$fqdn"}
 }
 
 class nginx::geoip inherits nginx::base{
@@ -56,7 +56,7 @@ class nginx::geoip inherits nginx::base{
       
     @@nagios_service{"check_nginx_$hostname":
       check_command => 'check_nginx',
-      use => 'generic_service',
+      use => 'generic-service',
       target => "/etc/nagios3/conf.d/$hostname.cfg",
       service_description => 'Check nginx',
       host_name => "$fqdn"}
