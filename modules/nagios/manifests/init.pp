@@ -16,6 +16,10 @@ class nagios {
     owner => 'root', group => 'root', mode => 644,
     source => 'puppet:///modules/nagios/nagios.cfg'}
   
+  file{"$hostname.cfg":
+    path => "/etc/nagios3/conf.d/$hostname.cfg",
+    owner => 'root', group => 'root', mode => 644}
+  
   Nagios_host <<||>>
   Nagios_service <<||>>
   Nagios_hostextinfo <<||>>
