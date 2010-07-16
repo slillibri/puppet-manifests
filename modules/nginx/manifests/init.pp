@@ -24,6 +24,18 @@ class nginx::base{
     target => "/etc/nagios3/conf.d/$hostname.cfg",
     service_description => 'Check web',
     host_name => "$fqdn"}
+    
+  @@nagios_service{"check_nginx_$hostname":
+    check_command => 'check_nginx',
+    use => 'generic_service',
+    target => '/etc/nagios3/conf.d/$hostname.cfg',
+    service_description => 'Check nginx',
+    host_name => "$fqdn"}
+    
+  @@nagios_command{"check_nginx":
+    command_line => "/usr/lib/nginx/plugins/check_http -H $HOSTNAME$ -I $HOSTADDRESS$ -p $nginx_port",
+    target => '/etc/nagios3/nagios_commands.cfg',
+    command_name => 'check_nginx'}
 }
 
 class nginx::geoip inherits nginx::base{
