@@ -62,7 +62,7 @@ class nginx::geoip inherits nginx::base{
       host_name => "$fqdn"}
 
     @@nagios_command{"check_nginx":
-      command_line => '/usr/lib/nginx/plugins/check_http -H $HOSTNAME$ -I $HOSTADDRESS$ -p $nginx_port',
+      command_line => '/usr/lib/nginx/plugins/check_http -H $HOSTNAME$ -I $HOSTADDRESS$',
       target => '/etc/nagios3/nagios_commands.cfg',
       command_name => 'check_nginx'}
     
