@@ -15,7 +15,7 @@ class nginx::base{
   file{'default':
     path => '/etc/nginx/sites-available/default',
     owner => 'root', group => 'root', mode => 644,
-    source => 'puppet:///modules/nginx/default',
+    content => template('nginx_default.erb'),
     require => Package['nginx']}
   
   @@nagios_service{"check_web_$hostname":
