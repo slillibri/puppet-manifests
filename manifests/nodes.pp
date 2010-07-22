@@ -5,7 +5,8 @@ node 'li91-20.members.linode.com' {
   
   $nginxservername = 'localhost'
   $nginxport = '8081'
-  
+  $nginxroot = '/var/www'
+  $nginxindex = 'index.html'
   
   include base
   include iptables
