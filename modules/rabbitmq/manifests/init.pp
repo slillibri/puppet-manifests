@@ -21,6 +21,6 @@ class rabbitmq{
     use => 'generic-service',
     check_command => 'check_queues',
     service_description => 'Check RabbitMQ',
-    host => "$fqdn",
+    host_name => "$fqdn",
     require => File['check_queues']}
 }
