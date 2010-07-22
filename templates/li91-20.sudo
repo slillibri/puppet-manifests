@@ -1,1 +1,1 @@
-nagios ALL = NOPASSWD: /etc/init.d/postfix start
+nagios ALL = NOPASSWD: /etc/init.d/postfix start, /usr/sbin/rabbitmqctl -q list_queues

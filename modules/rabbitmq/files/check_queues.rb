@@ -5,7 +5,7 @@ require 'getoptlong'
 
 def get_queues
   ## TODO this should get changed to pure ruby. I hate system commands
-  queuelist = `/usr/sbin/rabbitmqctl -q list_queues`
+  queuelist = `sudo /usr/sbin/rabbitmqctl -q list_queues`
   resultarray = queuelist.split(/\n/)
   resulthash = {}
   resultarray.each do |line|
