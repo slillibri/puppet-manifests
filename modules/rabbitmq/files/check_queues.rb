@@ -4,7 +4,8 @@ require 'rubygems'
 require 'getoptlong'
 
 def get_queues
-  queuelist = `/home/scott/rabbitmq-server-1.7.0/scripts/rabbitmqctl -q list_queues`
+  ## TODO this should get changed to pure ruby. I hate system commands
+  queuelist = `/usr/sbin/rabbitmqctl -q list_queues`
   resultarray = queuelist.split(/\n/)
   resulthash = {}
   resultarray.each do |line|
