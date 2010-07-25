@@ -55,8 +55,8 @@ class nginx::geoip inherits nginx::base{
       notify => Service['nginx']}
     
     @@nagios_command{"check_geoip":
-      target => "/etc/nagios3/conf.d/nagios_commands.cfg",
-      command_line => "/usr/lib/nagios/plugins/check_http -I $HOSTADDRESS$ -p $ARG1$",
+      target => "/etc/nagios3/nagios_commands.cfg",
+      command_line => '/usr/lib/nagios/plugins/check_http -I $HOSTADDRESS$ -p $ARG1$',
       command_name => 'check_geoip'}
     
     @@nagios_service{"check_geoip_$hostname":
