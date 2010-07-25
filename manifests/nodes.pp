@@ -7,6 +7,7 @@ node 'li91-20.members.linode.com' {
   $nginxport = '8081'
   $nginxroot = '/var/www'
   $nginxindex = 'index.html'
+  $geoport = '8081'
   
   include base
   include iptables

@@ -53,4 +53,16 @@ class nginx::geoip inherits nginx::base{
       source => 'puppet:///modules/nginx/geo_site',
       require => Package['nginx'],
       notify => Service['nginx']}
+    
+    @@nagios_command{"check_geoip":
+      target => "/etc/nagios3/conf.d/nagios_commands.cfg",
+      command_line => "/usr/lib/nagios/plugins/check_http -I $HOSTADDRESS$ -p $ARG1$",
+      command_name => 'check_geoip'}
+    
+    @@nagios_service{"check_geoip_$hostname":
+      check_command => "check_geoip!$geoport",
+      use => 'generic-service',
+      target => "/etc/nagios3/conf.d/$hostname.cfg",
+      service_description => 'geoip',
+      host_name => "$fqdn"}
 }
