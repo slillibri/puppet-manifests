@@ -1,14 +1,9 @@
-<% $nginxservername ||= 'localhost'%>
-<% $nginxport ||= '80' %>
-<% $nginxroot ||= '/var/www' %>
-<% $nginxindex ||= 'index.html' %>
-
 server{
-  server_name <%= $nginxservername %>;
-  listen <%= $nginxport %>;
+  server_name <%= nginxservername || 'localhost' %>;
+  listen <%= nginxport || '80' %>;
   
   location / {
-    root <%= $nginxroot %>;
-    index <%= $nginxindex %>;
+    root <%= nginxroot || '/var/www' %>;
+    index <%= nginxindex || 'index.html' %>;
   }
 }
