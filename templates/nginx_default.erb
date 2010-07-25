@@ -1,7 +1,7 @@
-<% $nginxservername |= 'localhost'%>
-<% $nginxport |= '80' %>
-<% $nginxroot |= '/var/www' %>
-<% $nginxindex |= 'index.html' %>
+<% $nginxservername ||= 'localhost'%>
+<% $nginxport ||= '80' %>
+<% $nginxroot ||= '/var/www' %>
+<% $nginxindex ||= 'index.html' %>
 
 server{
   server_name <%= $nginxservername %>;
