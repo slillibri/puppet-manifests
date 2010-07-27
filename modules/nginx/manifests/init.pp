@@ -18,14 +18,6 @@ class nginx::base{
     content => template('nginx_default.erb'),
     require => Package['nginx']}
   
-  @@nagios_service{"check_web_$hostname":
-    check_command => 'check_http',
-    use => 'generic-service',
-    target => "/etc/nagios3/conf.d/$hostname.cfg",
-    service_description => 'Check web',
-    host_name => "$fqdn"}
-}
-
 class nginx::geoip inherits nginx::base{
     file{'geoip':
       path => '/etc/nginx/conf.d/geoip.conf',
