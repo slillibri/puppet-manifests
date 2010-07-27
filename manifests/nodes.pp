@@ -27,6 +27,13 @@ node 'li91-20.members.linode.com' {
   gem_install{'rmagick': required => Class['imagemagick']}
   gem_install{'uuid': required => false}
   gem_install{'log4r': required => false}
+  
+  @@nagios_service{"check_web_auth_$hostname":
+    target => "/etc/nagios3/conf.d/$hostname.cfg",
+    check_command => 'check_web_auth!scott:in30D.s0',
+    use => 'generic-service',
+    service_description => 'HTTP',
+    host_name => "$fqdn"}
 }
 
 node 'li96-152.members.linode.com' {

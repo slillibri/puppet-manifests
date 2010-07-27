@@ -25,6 +25,11 @@ class nagios {
   Nagios_hostextinfo <<||>>
   Nagios_command <<||>>
   
+  @@nagios_command{"check_web_auth":
+    target => '/etc/nagios3/nagios_commands.cfg',
+    command_line => '/usr/lib/nagios/plugins/check_http -H $HOSTNAME$ -a $ARG1$',
+    command_name => 'check_web_auth'}
+  
   class target {
     @@nagios_host{$fqdn:
       ensure => 'present',
