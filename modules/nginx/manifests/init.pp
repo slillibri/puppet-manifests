@@ -17,6 +17,7 @@ class nginx::base{
     owner => 'root', group => 'root', mode => 644,
     content => template('nginx_default.erb'),
     require => Package['nginx']}
+}
   
 class nginx::geoip inherits nginx::base{
     file{'geoip':
