@@ -26,7 +26,7 @@ class StockWatcher
   def run
     AMQP.start(:host => 'localhost', :logging => false) do
       cas = Cassandra.new('Stocks')
-      queue = MQ.queue("#{@stock} stock")
+      queue = MQ.queue("#{@stock} stock", :durable => true)
       queue.bind(MQ.topic('stock_quotes'), :key => "stock.quote.#{@stock}")
       queue.subscribe do |headers,msg|
         begin
