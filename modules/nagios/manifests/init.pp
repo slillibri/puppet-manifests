@@ -8,7 +8,7 @@ class nagios {
     hasstatus => true,
     hasrestart => true,
     require => Package['nagios3'],
-    subscribe => [File['nagios.cfg'],Class['target']]}
+    subscribe => File['nagios.cfg']}
   
   
   file{'nagios.cfg':
