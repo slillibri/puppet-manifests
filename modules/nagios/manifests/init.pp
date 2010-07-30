@@ -29,6 +29,13 @@ class nagios {
     target => '/etc/nagios3/nagios_commands.cfg',
     command_line => '/usr/lib/nagios/plugins/check_http -H $HOSTNAME$ -a $ARG1$',
     command_name => 'check_web_auth'}
+    
+  file{'localhost_nagios2.cfg':
+    path => '/etc/nagios3/conf.d/localhost_nagios2.cfg',
+    ensure => 'absent'}      
+  file{'hostgroups_nagios2.cfg':
+    path => '/etc/nagios3/conf.d/hostgroups_nagios2.cfg',
+    ensure => 'absent'}
   
   class target {
     @@nagios_host{$fqdn:
