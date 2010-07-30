@@ -9,21 +9,21 @@ class nrpe{
   @@nagios_service{"check_load_$hostname":
     target => "/etc/nagios3/conf.d/$hostname.cfg",
     check_command => 'check_nrpe!check_load',
-    use => 'generic-serivce',
+    use => 'generic-service',
     service_description => 'Load',
     host_name => "$fqdn"}
 
   @@nagios_service{"check_disk_$hostname":
     target => "/etc/nagios3/conf.d/$hostname.cfg",
     check_command => 'check_nrpe!check_disk',
-    use => 'generic-serivce',
+    use => 'generic-service',
     service_description => 'Disk Usage',
     host_name => "$fqdn"}
 
   @@nagios_service{"check_memory_$hostname":
     target => "/etc/nagios3/conf.d/$hostname.cfg",
     check_command => 'check_nrpe!check_memory',
-    use => 'generic-serivce',
+    use => 'generic-service',
     service_description => 'Check Memory',
     host_name => "$fqdn"}
 }
