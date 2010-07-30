@@ -2,6 +2,10 @@ class nagios {
   package{'nagios3':
     ensure => 'installed'}
       
+  package{'nagios-nrpe-plugin':
+    ensure => 'installed',
+    require => Package['nagios3']}
+  
   service{'nagios3':
     ensure => running,
     alias  => 'nagios',
@@ -29,7 +33,8 @@ class nagios {
     target => '/etc/nagios3/nagios_commands.cfg',
     command_line => '/usr/lib/nagios/plugins/check_http -H $HOSTNAME$ -a $ARG1$',
     command_name => 'check_web_auth'}
-    
+  
+  ## Clean up default nagios files, debian specific so should be in it's own class...
   file{'localhost_nagios2.cfg':
     path => '/etc/nagios3/conf.d/localhost_nagios2.cfg',
     ensure => 'absent'}      
