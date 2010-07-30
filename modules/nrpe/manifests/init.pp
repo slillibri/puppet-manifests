@@ -15,7 +15,7 @@ class nrpe{
 
   @@nagios_service{"check_disk_$hostname":
     target => "/etc/nagios3/conf.d/$hostname.cfg",
-    check_command => "check_nrpe!75!85!/",
+    check_command => "check_nrpe!75\!85\!/",
     use => 'generic-service',
     service_description => 'Disk Usage',
     host_name => "$fqdn"}
