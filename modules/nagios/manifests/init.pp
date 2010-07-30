@@ -36,6 +36,9 @@ class nagios {
   file{'hostgroups_nagios2.cfg':
     path => '/etc/nagios3/conf.d/hostgroups_nagios2.cfg',
     ensure => 'absent'}
+  file{'services_nagios2.cfg':
+    path => '/etc/nagios3/conf.d/services_nagios2.cfg',
+    ensure => 'absent'}
   
   class target {
     @@nagios_host{$fqdn:
