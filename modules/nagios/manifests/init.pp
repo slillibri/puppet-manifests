@@ -39,6 +39,9 @@ class nagios {
   file{'services_nagios2.cfg':
     path => '/etc/nagios3/conf.d/services_nagios2.cfg',
     ensure => 'absent'}
+  file{'extinfo_nagios2.cfg':
+    path => '/etc/nagios3/conf.d/extinfo_nagios2.cfg',
+    ensure => 'absent'}
   
   class target {
     @@nagios_host{$fqdn:
