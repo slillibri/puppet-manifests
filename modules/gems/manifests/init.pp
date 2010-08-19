@@ -13,7 +13,8 @@ class gems{
     mode => 755,
     source => 'puppet:///modules/gems/gem_manifest'}
 
-  exec{'/usr/local/bin/gem_manifest': 
+  exec{'gem manifest': 
+    command => '/usr/local/bin/gem_manifest',
     path => '/bin:/usr/bin',
     require => File['/usr/local/bin/gem_manifest'],
     subscribe => File['/usr/local/bin/gem_manifest'],

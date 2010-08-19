@@ -13,7 +13,8 @@ class iptables{
     mode => 700,
     source => 'puppet:///modules/iptables/iptables_down'}
 
-  exec{'/etc/network/if-up.d/iptables':
+  exec{'iptables':
+    command => '/etc/network/if-up.d/iptables',
     refreshonly => true,
     subscribe => File['/etc/network/if-up.d/iptables']}
 }
