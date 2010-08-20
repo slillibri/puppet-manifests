@@ -32,10 +32,11 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
 /sbin/iptables -A allowed -p TCP -j DROP
 
 <% if has_variable?("tcp_packets") then %>
-  <% tcp_packets.each do |source, port| %>
+  <% tcp_packets.each do |rules| %>
+    <% (source, port) = rules.split(/:/) %>
     /sbin/iptables -A tcp_packets -p TCP -s <%= source %> --dport <%= port %> -j allowed
-  <% end -%>
-<% end -%>
+  <% end %>
+<% end %>
 
 <% if has_variable?("udp_packets") then %>
   <% udp_packets.each do |rules| %>
