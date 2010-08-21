@@ -1,7 +1,7 @@
 node 'li91-20.members.linode.com' {
   $tcp_packets = {'0/0' => ['22', '80'],
                   '74.207.254.152' => ['8139', '5672']}
-	#$tcp_packets = ['0/0:22', '127.0.0.1:9160', '74.207.254.152:8139', '0/0:80', '74.207.254.152:5672']
+
   $icmp_packets = ['0/0:8', '0/0:11']
   $logwatch_mailto = 'scott.lillibridge@gmail.com'
   
@@ -32,15 +32,13 @@ node 'li91-20.members.linode.com' {
   
   @@nagios_service{"check_web_auth_$hostname":
     target => "/etc/nagios3/conf.d/$hostname.cfg",
-    check_command => 'check_web_auth!scott:in30D.s0',
+    check_command => 'check_web_auth!scott:password',
     use => 'generic-service',
     service_description => 'HTTP',
     host_name => "$fqdn"}
 }
 
 node 'li96-152.members.linode.com' {
-  #$tcp_packets = ['0/0:22', '74.207.249.20:8140', '74.207.254.152:8140', '127.0.0.1:8140', '74.207.249.20:5666', '0/0:80', '0/0:3128']
-  
   $tcp_packets = {'0/0' => ['22','80', '3128'],
                   '74.207.249.20' => ['8140','5666']}
                   
