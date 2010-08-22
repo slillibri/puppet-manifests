@@ -10,11 +10,11 @@ class squid{
     path => '/etc/squid3/squid.conf',
     owner => 'root', group => 'root', mode => 644,
     source => 'puppet:///modules/squid/squid.conf',
-    require => Package['squid']}
+    require => Package['squid3']}
   
   file{'squid_passwd':
     path => '/etc/squid3/squid_passwd',
     owner => 'root', group => 'root', mode => 644,
     source => 'puppet:///modules/squid/squid_passwd',
-    require => Package['squid']}
+    require => Package['squid3']}
 }
