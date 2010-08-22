@@ -1,9 +1,9 @@
 class squid{
-  package{"squid": ensure => 'installed'}
+  package{"squid3": ensure => 'installed'}
   
-  service{"squid":
+  service{"squid3":
     ensure => 'running',
-    require => Package['squid'],
+    require => Package['squid3'],
     subscribe => [File['squid.conf'], File['squid_passwd']]}
   
   file{"squid.conf":
