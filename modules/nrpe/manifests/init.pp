@@ -6,6 +6,11 @@ class nrpe{
     ensure => 'running',
     require => Package['nagios-nrpe-server']}
   
+  file{'nrpe.cfg',
+    path => '/etc/nagios/nrpe.cfg',
+    owner => 'root', group => 'root', mode => '644',
+    content => template("$hostname.nrpe")}
+
   @@nagios_service{"check_load_$hostname":
     target => "/etc/nagios3/conf.d/$hostname.cfg",
     check_command => 'check_nrpe_1arg!check_load',
