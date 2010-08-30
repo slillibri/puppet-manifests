@@ -3,7 +3,7 @@ pid_file=/var/run/nagios/nrpe.pid
 server_port=5666
 nrpe_user=nagios
 nrpe_group=nagios
-allowed_hosts=127.0.0.1, <%= nrpe_host %>
+allowed_hosts=127.0.0.1 <%= nrpe_host %>
  
 dont_blame_nrpe=0
 debug=0
