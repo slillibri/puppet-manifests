@@ -4,7 +4,8 @@ class nrpe{
   
   service{'nagios-nrpe-server':
     ensure => 'running',
-    require => Package['nagios-nrpe-server']}
+    require => Package['nagios-nrpe-server'],
+    subscribe => File['nrpe.cfg']}
   
   file{'nrpe.cfg':
     path => '/etc/nagios/nrpe.cfg',
