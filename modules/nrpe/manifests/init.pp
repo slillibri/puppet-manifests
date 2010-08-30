@@ -6,7 +6,7 @@ class nrpe{
     ensure => 'running',
     require => Package['nagios-nrpe-server']}
   
-  file{'nrpe.cfg',
+  file{'nrpe.cfg':
     path => '/etc/nagios/nrpe.cfg',
     owner => 'root', group => 'root', mode => '644',
     content => template("$hostname.nrpe")}
