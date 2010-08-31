@@ -45,6 +45,7 @@ node 'li96-152.members.linode.com' {
   $icmp_packets = ['0/0:8', '0/0:11']
   $nrpe_host = '74.207.249.20'
   
+  include development
   include nagios::target
   include sshd
   include squid
