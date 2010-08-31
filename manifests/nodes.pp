@@ -1,6 +1,6 @@
 node 'li91-20.members.linode.com' {
   $tcp_packets = {'0/0' => ['22', '80'],
-                  '74.207.254.152' => ['8139', '5672']}
+                  '74.207.254.152' => ['8139', '5672', '7789']}
 
   $icmp_packets = ['0/0:8', '0/0:11']
   $logwatch_mailto = 'scott.lillibridge@gmail.com'
@@ -40,7 +40,7 @@ node 'li91-20.members.linode.com' {
 
 node 'li96-152.members.linode.com' {
   $tcp_packets = {'0/0' => ['22','80', '3128'],
-                  '74.207.249.20' => ['8140','5666']}
+                  '74.207.249.20' => ['8140','5666','7789']}
                   
   $icmp_packets = ['0/0:8', '0/0:11']
   $nrpe_host = '74.207.249.20'
