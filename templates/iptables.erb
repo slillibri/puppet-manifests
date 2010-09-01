@@ -3,6 +3,9 @@
 INET_IP=<%= ipaddress_eth0 %>
 INET_IFACE="eth0"
 
+PVT_IP=<%= ipaddress_eth0_0 %>
+PVT_IFACE="eth0:0"
+
 LO_IFACE="lo"
 LO_IP="127.0.0.1"
 
@@ -60,6 +63,8 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
 
 /sbin/iptables -A INPUT -p ALL -d $INET_IP -m state --state ESTABLISHED,RELATED -j ACCEPT
 /sbin/iptables -A INPUT -p TCP -i $INET_IFACE -j tcp_packets
+/sbin/iptables -A INPUT -p ALL -d $PVT_IP -m state --state ESTABLISHED,RELATED -j ACCEPT
+/sbin/iptables -A INPUT -p TCP 0i $PVT_IFACE -k tcp_packets
 /sbin/iptables -A INPUT -p ALL -d $LO_IP -m state --state ESTABLISHED,RELATED -j ACCEPT
 /sbin/iptables -A INPUT -p TCP -i $LO_IFACE -j tcp_packets
 /sbin/iptables -A INPUT -p ICMP -i $LO_IFACE -j icmp_packets
