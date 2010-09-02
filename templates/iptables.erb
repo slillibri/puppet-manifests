@@ -73,6 +73,9 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
 /sbin/iptables -A INPUT -p ICMP -i $INET_IFACE -j icmp_packets
 /sbin/iptables -A INPUT -p ICMP -i $PVT_IFACE -j icmp_packets
 
+/sbin/iptables -A INPUT -p UDP -i $INET_IFACE -j udp_packets
+/sbin/iptables -A INPUT -p UDP -i $PVT_IFACE -j udp_packets
+/sbin/iptables -A INPUT -p UDP -i $LO_IFACE -j udp_packets
 
 /sbin/iptables -A INPUT -m limit --limit 3/minute --limit-burst 3 -j LOG --log-level DEBUG --log-prefix "IPT INPUT packet died: "
 
