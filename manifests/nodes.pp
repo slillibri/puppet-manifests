@@ -6,6 +6,8 @@ node 'li91-20.members.linode.com' {
   $icmp_packets = ['0/0:8', '0/0:11']
   $udp_packets = ['74.207.254.152:694']
   
+  $ipaddress_eth0_0 = '192.168.141.24'
+  
   $logwatch_mailto = 'scott.lillibridge@gmail.com'
   
   $nginxservername = 'localhost'
