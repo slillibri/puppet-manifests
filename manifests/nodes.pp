@@ -64,4 +64,5 @@ node 'li96-152.members.linode.com' {
   include sudo
   include nrpe
   include logwatch
+  include postfix
 }
