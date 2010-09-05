@@ -51,6 +51,10 @@ node 'li96-152.members.linode.com' {
   $icmp_packets = ['0/0:8', '0/0:11']
   $nrpe_host = '74.207.249.20'
   
+  $ipaddress_eth0_0 = '192.168.141.111'
+  
+  $logwatch_mailto = "scott.lillibridge@gmail.com"
+  
   include development
   include nagios::target
   include sshd
@@ -58,5 +62,6 @@ node 'li96-152.members.linode.com' {
   include iptables
   include users
   include sudo
-  include nrpe  
+  include nrpe
+  include logwatch
 }
