@@ -10,7 +10,7 @@ LO_IFACE="lo"
 LO_IP="127.0.0.1"
 
 ## Find all interfaces
-<% interfaces = Factor.fact('interfaces').value.split(/,/).select{|i| i =~ /eth*/} %>
+<% interfaces = Facter.fact('interfaces').value.split(/,/).select{|i| i =~ /eth*/} %>
 
 echo "1" > /proc/sys/net/ipv4/ip_forward
 
