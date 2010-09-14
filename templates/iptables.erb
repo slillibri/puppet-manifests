@@ -9,6 +9,9 @@ PVT_IFACE="eth0:0"
 LO_IFACE="lo"
 LO_IP="127.0.0.1"
 
+## Find all interfaces
+<% interfaces = Factor.fact('interfaces').value.split(/,/).select{|i| i =~ /eth*/} %>
+
 echo "1" > /proc/sys/net/ipv4/ip_forward
 
 ## Set default policy to allow while setting up chains
@@ -57,37 +60,33 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
 <% end %>
 
 /sbin/iptables -A tcp_packets -p TCP -s 127.0.0.1 -d 127.0.0.1 -j allowed
-/sbin/iptables -A tcp_packets -p TCP -s <%= ipaddress_eth0 %> -d <%= ipaddress_eth0 %> -j allowed
-/sbin/iptables -A tcp_packets -p TCP -s <%= ipaddress_eth0_0 %> -d <%= ipaddress_eth0_0 %> -j allowed
 
 /sbin/iptables -A INPUT -p tcp -j bad_tcp_packets
+/sbin/iptables -A OUTPUT -p tcp -j bad_tcp_packets
+/sbin/iptables -A FORWARD -p tcp -j bad_tcp_packets
 
-/sbin/iptables -A INPUT -p ALL -d $INET_IP -m state --state ESTABLISHED,RELATED -j ACCEPT
-/sbin/iptables -A INPUT -p TCP -i $INET_IFACE -j tcp_packets
-/sbin/iptables -A INPUT -p ALL -d $PVT_IP -m state --state ESTABLISHED,RELATED -j ACCEPT
-/sbin/iptables -A INPUT -p TCP -i $PVT_IFACE -j tcp_packets
+#Make sure the system can talk to itself on all interfaces
+<% interfaces.each do |interface| %>
+  <% address = Facter.fact("ipaddress_#{interface}").value %>
+  /sbin/iptables -A tcp_packets -p TCP -s <%= address %> -d <%= address %> -j allowed
+  /sbin/iptables -A INPUT -p ALL -d <%= address %> -m state --state ESTABLISHED,RELATED -j ACCEPT
+  /sbin/iptables -A INPUT -p TCP -i <%= interface %> -j tcp_packets
+  /sbin/iptables -A INPUT -p ICMP -i  <%= interface %> -j icmp_packets
+  /sbin/iptables -A INPUT -p UDP -i <%= interface %> -j icmp_packets
+  /sbin/iptables -A OUTPUT -p ALL -s <%= address %> -j ACCEPT
+<% end %>
+
 /sbin/iptables -A INPUT -p ALL -d $LO_IP -m state --state ESTABLISHED,RELATED -j ACCEPT
 /sbin/iptables -A INPUT -p TCP -i $LO_IFACE -j tcp_packets
-
 /sbin/iptables -A INPUT -p ICMP -i $LO_IFACE -j icmp_packets
-/sbin/iptables -A INPUT -p ICMP -i $INET_IFACE -j icmp_packets
-/sbin/iptables -A INPUT -p ICMP -i $PVT_IFACE -j icmp_packets
-
-/sbin/iptables -A INPUT -p UDP -i $INET_IFACE -j udp_packets
-/sbin/iptables -A INPUT -p UDP -i $PVT_IFACE -j udp_packets
 /sbin/iptables -A INPUT -p UDP -i $LO_IFACE -j udp_packets
 
 /sbin/iptables -A INPUT -m limit --limit 3/minute --limit-burst 3 -j LOG --log-level DEBUG --log-prefix "IPT INPUT packet died: "
 
-/sbin/iptables -A FORWARD -p tcp -j bad_tcp_packets
 
 /sbin/iptables -A FORWARD -m limit --limit 3/minute --limit-burst 3 -j LOG --log-level DEBUG --log-prefix "IPT FORWARD packet died: "
 
-/sbin/iptables -A OUTPUT -p tcp -j bad_tcp_packets
-
 /sbin/iptables -A OUTPUT -p ALL -s $LO_IP -j ACCEPT
-/sbin/iptables -A OUTPUT -p ALL -s $INET_IP -j ACCEPT
-/sbin/iptables -A OUTPUT -p ALL -s $PVT_IP -j ACCEPT
 
 /sbin/iptables -A OUTPUT -m limit --limit 3/minute --limit-burst 3 -j LOG --log-level DEBUG --log-prefix "IPT OUTPUT packet died: "
 
