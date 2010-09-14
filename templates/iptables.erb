@@ -72,7 +72,7 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
   /sbin/iptables -A INPUT -p ALL -d <%= address %> -m state --state ESTABLISHED,RELATED -j ACCEPT
   /sbin/iptables -A INPUT -p TCP -i <%= interface %> -j tcp_packets
   /sbin/iptables -A INPUT -p ICMP -i  <%= interface %> -j icmp_packets
-  /sbin/iptables -A INPUT -p UDP -i <%= interface %> -j icmp_packets
+  /sbin/iptables -A INPUT -p UDP -i <%= interface %> -j udp_packets
   /sbin/iptables -A OUTPUT -p ALL -s <%= address %> -j ACCEPT
 <% end %>
 
