@@ -68,11 +68,12 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
 #Make sure the system can talk to itself on all interfaces
 <% interfaces.each do |interface| %>
   <% address = Facter.fact("ipaddress_#{interface}").value %>
+  <% iface = interface.gsub("/_/", ":") %>
   /sbin/iptables -A tcp_packets -p TCP -s <%= address %> -d <%= address %> -j allowed
   /sbin/iptables -A INPUT -p ALL -d <%= address %> -m state --state ESTABLISHED,RELATED -j ACCEPT
-  /sbin/iptables -A INPUT -p TCP -i <%= interface %> -j tcp_packets
-  /sbin/iptables -A INPUT -p ICMP -i  <%= interface %> -j icmp_packets
-  /sbin/iptables -A INPUT -p UDP -i <%= interface %> -j udp_packets
+  /sbin/iptables -A INPUT -p TCP -i <%= iface %> -j tcp_packets
+  /sbin/iptables -A INPUT -p ICMP -i  <%= iface %> -j icmp_packets
+  /sbin/iptables -A INPUT -p UDP -i <%= iface %> -j udp_packets
   /sbin/iptables -A OUTPUT -p ALL -s <%= address %> -j ACCEPT
 <% end %>
 
