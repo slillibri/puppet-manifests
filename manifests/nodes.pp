@@ -49,6 +49,7 @@ node 'li96-152.members.linode.com' {
                   '192.168.141.24' => ['7789']}
                   
   $icmp_packets = ['0/0:8', '0/0:11']
+  $udp_packets = ['74.207.249.20:649']
   $nrpe_host = '74.207.249.20'
   
   $ipaddress_eth0_0 = '192.168.141.111'
