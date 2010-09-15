@@ -48,7 +48,7 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
 <% if has_variable?("udp_packets") then %>
   <% udp_packets.each do |rules| %>
     <% (source,port) = rules.split(/:/) %>
-    /sbin/iptables -A udp_packets -p UDP -s <%= source %> --dport <%= port %> -j ACCEPT
+    /sbin/iptables -A udp_packets -p UDP -s <%= source %> -j ACCEPT
   <% end %>
 <% end %>
 
