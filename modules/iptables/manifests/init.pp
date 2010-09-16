@@ -1,8 +1,6 @@
 class iptables{
   package{'iptables': ensure => 'installed'}
   
-  $network = ['eth0', 'eth0_0', 'lo']
-  
   file{'/etc/network/if-up.d/iptables':
     owner => 'root',
     group => 'root',
