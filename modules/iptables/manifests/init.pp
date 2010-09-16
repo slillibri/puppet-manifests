@@ -1,7 +1,7 @@
 class iptables{
   package{'iptables': ensure => 'installed'}
   
-  $network = interfaces.split(/,/).select {|i| i =~ /eth|lo/}
+  $network = ['eth0', 'eth0:0', 'lo']
   
   file{'/etc/network/if-up.d/iptables':
     owner => 'root',
