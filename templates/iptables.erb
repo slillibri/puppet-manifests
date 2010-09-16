@@ -9,7 +9,7 @@ PVT_IFACE="eth0:0"
 LO_IFACE="lo"
 LO_IP="127.0.0.1"
 
-<% interfaces = interfaces.value.split(/,/).select{|i| i =~ /eth|lo/} %>
+<% interfaces = Facter.fact('interfaces').value.split(/,/).select{|i| i =~ /eth|lo/} %>
 
 echo "1" > /proc/sys/net/ipv4/ip_forward
 
