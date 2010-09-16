@@ -9,9 +9,9 @@ PVT_IFACE="eth0:0"
 LO_IFACE="lo"
 LO_IP="127.0.0.1"
 
-## <%= interfaces %>
 
-<% interfaces = Facter.fact('interfaces').value.split(/,/).select{|i| i =~ /eth|lo/} %>
+
+<% network = interfaces.split(/,/).select{|i| i =~ /eth|lo/} %>
 
 echo "1" > /proc/sys/net/ipv4/ip_forward
 
@@ -65,8 +65,8 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
 /sbin/iptables -A FORWARD -p tcp -j bad_tcp_packets
 
 #Make sure the system can talk to itself on all interfaces
-<% interfaces.each do |interface| %>
-  <% address = Facter.fact("ipaddress_#{interface}").value %>
+<% network.each do |interface| %>
+  <% address = "ipaddress_#{interface}".value %>
   <% iface = interface.gsub(/_/, ":") %>
   /sbin/iptables -A tcp_packets -p TCP -s <%= address %> -d <%= address %> -j allowed
   /sbin/iptables -A INPUT -p ALL -d <%= address %> -m state --state ESTABLISHED,RELATED -j ACCEPT
