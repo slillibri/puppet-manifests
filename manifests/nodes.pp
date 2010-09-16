@@ -16,6 +16,8 @@ node 'li91-20.members.linode.com' {
   $nginxindex = 'index.html'
   $geoport = '8081'
   
+  $interfaces = Facter.fact('interfaces').value.split(/,/).select{|i| i =~ /eth|lo/}
+  
   include base
   include iptables
   include postfix
@@ -55,6 +57,7 @@ node 'li96-152.members.linode.com' {
   $ipaddress_eth0_0 = '192.168.141.111'
   
   $logwatch_mailto = "scott.lillibridge@gmail.com"
+  $interfaces = Facter.fact('interfaces').value.split(/,/).select{|i| i =~ /eth|lo/}
   
   include development
   include nagios::target
