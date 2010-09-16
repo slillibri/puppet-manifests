@@ -1,6 +1,8 @@
 class iptables{
   package{'iptables': ensure => 'installed'}
   
+  $network = Facter.fact('interfaces').value.split(/,/).select {|i| i =~ /eth|lo/}
+  
   file{'/etc/network/if-up.d/iptables':
     owner => 'root',
     group => 'root',
