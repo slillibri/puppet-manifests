@@ -7,7 +7,7 @@ class varnish{
     require => Package['varnish']}
   
   file{'varnish_defaults':
-    path => '/etc/defaults/varnish',
+    path => '/etc/default/varnish',
     notify => Service['varnish'],
     owner => 'root', group => 'root', mode => '644',
     source => 'puppet:///modules/varnish/default'}
