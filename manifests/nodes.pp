@@ -1,7 +1,7 @@
 node 'li91-20.members.linode.com' {
   $tcp_packets = {'0/0' => ['22', '80'],
                   '74.207.254.152' => ['8139', '5672', '7789'],
-                  '192.168.141.111' => ['7789']}
+                  '192.168.141.111' => ['7789','8081']}
 
   $icmp_packets = ['0/0:8', '0/0:11']
   $udp_packets = ['74.207.254.152:694']
@@ -57,7 +57,7 @@ node 'li96-152.members.linode.com' {
   $logwatch_mailto = "scott.lillibridge@gmail.com"
 
   $varnish_host = "192.168.141.24"
-  $varnish_port = "8080"
+  $varnish_port = "8081"
   
   include development
   include nagios::target
