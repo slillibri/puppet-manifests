@@ -12,7 +12,7 @@ class nrpe{
     path => '/etc/nagios/nrpe.cfg',
     owner => 'root', group => 'root', mode => '644',
     content => template("$hostname.nrpe"),
-    notify => Service['nagios-nrpe-server']}
+    notify => Service['nrpe']}
 
   @@nagios_service{"check_load_$hostname":
     target => "/etc/nagios3/conf.d/$hostname.cfg",
