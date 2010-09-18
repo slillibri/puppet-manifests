@@ -59,11 +59,11 @@ node 'li96-152.members.linode.com' {
   include development
   include nagios::target
   include sshd
-  include squid
   include iptables
   include users
   include sudo
   include nrpe
   include logwatch
   include postfix
+  include varnish
 }
