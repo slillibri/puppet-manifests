@@ -56,7 +56,7 @@ node 'li96-152.members.linode.com' {
   
   $logwatch_mailto = "scott.lillibridge@gmail.com"
 
-  $varnish_host = "192.168.141.24"
+  $varnish_host = "74.207.249.20"
   $varnish_port = "8081"
   
   include development
