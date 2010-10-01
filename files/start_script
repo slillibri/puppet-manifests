@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+##Fetch testing sources.list
+wget -O /etc/apt/sources.list http://li96-152.members.linode.com/apt_sources
+
+##Install cassandra keys
+gpg --keyserver wwwkeys.eu.pgp.net --recv-keys F758CE318D77295D
+gpg --export --armor F758CE318D77295D | apt-key add -
+
+##Install rabbitmq keys
+wget http://www.rabbitmq.com/rabbitmq-signing-key-public.asc
+apt-key add rabbitmq-signing-key-public.asc
+rm rabbitmq-signing-key-public.asc
+
+##Update apt cache
+apt-get update
+
+##Upgrade to testing
+apt-get -y dist-upgrade
+
+##Install screen and puppet
+apt-get -y install screen puppet
+
+##Stop puppet
+/etc/init.d/puppet stop
+
+##Fetch new puppet config
+wget -O /etc/puppet/puppet.conf http://li96-152.members.linode.com/puppet_conf
+wget -O /etc/puppet/namespaceauth.conf http://li96-152.members.linode.com/namespaceauth_conf
+wget -O /etc/puppet/auth.conf http://li96-152.members.linode.com/auth_conf
+
+##Start puppet
+/etc/init.d/puppet start
