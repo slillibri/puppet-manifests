@@ -68,5 +68,4 @@ node 'li96-152.members.linode.com' {
   include nrpe
   include logwatch
   include postfix
-  include varnish
 }
