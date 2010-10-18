@@ -3,7 +3,7 @@ class nrpe{
     ensure => 'installed'}
   
   service{'nrpe':
-    path => '/etc/init.d/nagios-nrpe/server',
+    path => '/etc/init.d/nagios-nrpe-server',
     ensure => 'running',
     require => Package['nagios-nrpe-server'],
     subscribe => File['nrpe.cfg']}
