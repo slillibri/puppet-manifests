@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ##Fetch testing sources.list
-wget -O /etc/apt/sources.list http://li96-152.members.linode.com/apt_sources
+wget -O /etc/apt/sources.list http://li96-152.members.linode.com/sources.list
 
 ##Install cassandra keys
 gpg --keyserver wwwkeys.eu.pgp.net --recv-keys F758CE318D77295D
@@ -25,9 +25,9 @@ apt-get -y install screen puppet
 /etc/init.d/puppet stop
 
 ##Fetch new puppet config
-wget -O /etc/puppet/puppet.conf http://li96-152.members.linode.com/puppet_conf
-wget -O /etc/puppet/namespaceauth.conf http://li96-152.members.linode.com/namespaceauth_conf
-wget -O /etc/puppet/auth.conf http://li96-152.members.linode.com/auth_conf
+wget -O /etc/puppet/puppet.conf http://li96-152.members.linode.com/puppet.conf
+wget -O /etc/puppet/namespaceauth.conf http://li96-152.members.linode.com/namespaceauth.conf
+wget -O /etc/puppet/auth.conf http://li96-152.members.linode.com/auth.conf
 
 ##Start puppet
 /etc/init.d/puppet start
