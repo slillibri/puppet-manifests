@@ -15,7 +15,7 @@ class sshd{
     notify => Service['ssh']}
 
   @@nagios_service{"check_ssh_$hostname":
-    check_command => 'check_ssh',
+    check_command => 'check_ssh_port!2222',
     use => 'generic-service',
     target => "/etc/nagios3/conf.d/$hostname.cfg",
     service_description => 'Check SSH',
