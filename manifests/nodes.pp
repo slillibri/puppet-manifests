@@ -28,9 +28,9 @@ node 'li91-20.members.linode.com' {
   
   include nginx::geoip
   
-  gem_install{'amqp': required => Class['development']}
+  gem_install{'amqp': required => [Class['development'], Package['ruby-dev']]}
   gem_install{'gruff': required => Package['rmagick']}
-  gem_install{'rmagick': required => Class['imagemagick']}
+  gem_install{'rmagick': required => [Class['imagemagick'], Package['ruby-dev']]}
   gem_install{'uuid': required => false}
   gem_install{'log4r': required => false}
   

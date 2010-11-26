@@ -9,4 +9,5 @@ class development {
   package{"autotools-dev": ensure => installed}
   package{"libreadline5-dev": ensure => installed}
   package{"libmysqlclient-dev": ensure => installed}
+  package{"ruby-dev": ensure => installed}
 }

@@ -19,7 +19,7 @@ apt-get update
 apt-get -y dist-upgrade
 
 ##Install screen and puppet
-apt-get -y install screen puppet
+apt-get -y install screen ruby puppet libactiverecord-ruby rubygems
 
 ##Stop puppet
 /etc/init.d/puppet stop
