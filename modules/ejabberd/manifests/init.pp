@@ -7,7 +7,7 @@ class ejabberd {
     require => Package['ejabberd']}
   
   file{'jabber':
-    path => '/etc/nagios-plugns/config/jabber',
+    path => '/etc/nagios-plugins/config/jabber',
     owner => 'root', group => 'root', mode => '644',
     source => "puppet:///modules/ejabberd/jabber"}
   
