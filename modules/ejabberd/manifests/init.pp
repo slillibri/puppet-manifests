@@ -9,7 +9,7 @@ class ejabberd {
   @@nagios_service{'check_ejabberd':
     target => "/etc/nagios3/conf.d/$hostname.cfg",
     check_command => 'check_jabber',
-    use => 'generic_service',
+    use => 'generic-service',
     service_description => 'EJabberd',
     host_name => "$fqdn"}
 }
