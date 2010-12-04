@@ -26,6 +26,7 @@ node 'li91-20.members.linode.com' {
   include nagios
   include nagios::target
   
+  include ejabberd
   include nginx::geoip
   
   gem_install{'amqp': required => [Class['development'], Package['ruby-dev']]}
