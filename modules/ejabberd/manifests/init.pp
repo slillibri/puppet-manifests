@@ -9,7 +9,7 @@ class ejabberd {
   file{'jabber':
     path => '/etc/nagios-plugns/config/jabber',
     owner => 'root', group => 'root', mode => '644',
-    source => "puppet://modules/ejabberd/jabber"}
+    source => "puppet:///modules/ejabberd/jabber"}
   
   @@nagios_service{'check_ejabberd':
     target => "/etc/nagios3/conf.d/$hostname.cfg",
