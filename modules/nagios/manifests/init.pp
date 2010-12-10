@@ -16,7 +16,7 @@ class nagios {
     hasstatus => true,
     hasrestart => true,
     require => Package['nagios3'],
-    subscribe => File['nagios.cfg']}
+    subscribe => [File['nagios.cfg'], File['cgi.cfg']]}
   
   
   file{'nagios.cfg':
@@ -33,6 +33,11 @@ class nagios {
     path => "/etc/nagios3/conf.d/$hostname.cfg",
     owner => 'root', group => 'root', mode => 644}
   
+  file{'htpasswd.users'
+    path => '/etc/nagios3/htpasswd.users',
+    owner => 'root', group => 'root', mode => 644,
+    source => 'puppet:///modules/nagios/htpasswd.users'}
+
   Nagios_host <<||>>
   Nagios_service <<||>>
   Nagios_hostextinfo <<||>>
