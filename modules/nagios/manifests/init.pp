@@ -33,7 +33,7 @@ class nagios {
     path => "/etc/nagios3/conf.d/$hostname.cfg",
     owner => 'root', group => 'root', mode => 644}
   
-  file{'htpasswd.users'
+  file{'htpasswd.users':
     path => '/etc/nagios3/htpasswd.users',
     owner => 'root', group => 'root', mode => 644,
     source => 'puppet:///modules/nagios/htpasswd.users'}
