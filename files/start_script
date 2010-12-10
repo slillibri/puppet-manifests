@@ -28,6 +28,7 @@ apt-get -y install screen ruby puppet libactiverecord-ruby rubygems
 wget -O /etc/puppet/puppet.conf http://li96-152.members.linode.com/puppet.conf
 wget -O /etc/puppet/namespaceauth.conf http://li96-152.members.linode.com/namespaceauth.conf
 wget -O /etc/puppet/auth.conf http://li96-152.members.linode.com/auth.conf
+wget -O /etc/default/puppet http://li96-152.members.linode.com/default_puppet
 
 ##Start puppet
 /etc/init.d/puppet start
