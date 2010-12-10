@@ -5,7 +5,11 @@ class nagios {
   package{'nagios-nrpe-plugin':
     ensure => 'installed',
     require => Package['nagios3']}
-  
+
+  package{'nagios-images':
+    ensure => 'installed',
+    require => Package['nagios3']}
+
   service{'nagios3':
     ensure => running,
     alias  => 'nagios',
@@ -19,7 +23,12 @@ class nagios {
     path  => '/etc/nagios3/nagios.cfg',
     owner => 'root', group => 'root', mode => 644,
     source => 'puppet:///modules/nagios/nagios.cfg'}
-  
+
+  file{'cgi.cfg':
+    path => '/etc/nagios3/cgi.cfg',
+    owner => 'root', group => 'root', mode => 644,
+    source => 'puppet:///modules/nagios/cgi.cfg'}
+
   file{"$hostname.cfg":
     path => "/etc/nagios3/conf.d/$hostname.cfg",
     owner => 'root', group => 'root', mode => 644}
