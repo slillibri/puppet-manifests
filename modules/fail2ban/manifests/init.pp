@@ -3,8 +3,7 @@ class fail2ban {
     ensure => 'installed'}
     
   service{'fail2ban':
-    require => [Package['fail2ban'],File['jail.conf']],
-    ensure => 'running'}
+    require => [Package['fail2ban'],File['jail.conf']]}
     
   file{'jail.conf':
     path => '/etc/fail2ban/jail.conf',

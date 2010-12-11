@@ -1,7 +1,6 @@
 class cassandra {
   service{'cassandra': 
-    require => Package['cassandra'],
-    ensure => 'running'}
+    require => Package['cassandra']}
   
   package{'cassandra':
     name => 'cassandra',
