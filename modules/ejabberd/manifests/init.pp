@@ -11,7 +11,7 @@ class ejabberd {
     path => '/etc/ejabberd/ejabberd.cfg',
     owner => 'root', group => 'root', mode => 600,
     content => template('ejabberd.erb'),
-    require => Service['ejabberd']}
+    require => Package['ejabberd']}
   
   file{'jabber':
     path => '/etc/nagios-plugins/config/jabber.cfg',
