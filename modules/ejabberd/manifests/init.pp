@@ -9,7 +9,7 @@ class ejabberd {
   
   file{'ejabberd.cfg':
     path => '/etc/ejabberd/ejabberd.cfg',
-    owner => 'root', group => 'root', mode => 600,
+    owner => 'ejabberd', group => 'root', mode => 600,
     content => template('ejabberd.erb'),
     require => Package['ejabberd']}
   
