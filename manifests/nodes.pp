@@ -14,7 +14,10 @@ node 'li91-20.members.linode.com' {
   $nginxroot = '/var/www'
   $nginxindex = 'index.html'
   $geoport = '8081'
-    
+  
+  $ejabberd_host = 'jabber.thereisnoarizona.org'
+  $ejabberd_admin = 'admin'
+  
   include base
   include iptables
   include postfix
