@@ -4,7 +4,14 @@ class ejabberd {
   
   service{'ejabberd':
     ensure => 'running',
-    require => Package['ejabberd']}
+    require => Package['ejabberd'],
+    subscribe => File['ejabberd.cfg']}
+  
+  file{'ejabberd.cfg':
+    path => '/etc/ejabberd/ejabberd.cfg',
+    owner => 'root', group => 'root', mode => 600,
+    content => template('ejabberd.erb'),
+    require => Service['ejabberd']}
   
   file{'jabber':
     path => '/etc/nagios-plugins/config/jabber.cfg',
