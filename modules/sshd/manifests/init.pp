@@ -1,5 +1,9 @@
 class sshd{
-  service{'ssh': 
+  service{'ssh':
+    name => $operatingsystem ? {
+      debian => 'ssh',
+      centos => 'sshd'
+    },
     require => Package['openssh-server'],
     ensure => 'running'}
   
