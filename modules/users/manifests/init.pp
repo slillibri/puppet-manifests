@@ -6,6 +6,7 @@ class ruby-shadow{
 
 class users{
   include ruby-shadow
+  include sudo
   
   user{'scott':
     comment => 'Scott Lillibridge',
