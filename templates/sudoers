@@ -20,4 +20,4 @@ root	ALL=(ALL) ALL
 # (Note that later entries override this, so you might need to move
 # it further down)
 %sudo ALL=(ALL) ALL
-
+%wheel ALL=(ALL) ALL

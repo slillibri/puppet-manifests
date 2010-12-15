@@ -1,6 +1,9 @@
 class ruby-shadow{
   package{'ruby-shadow':
-    name => 'libshadow-ruby1.8',
+    name => $operatingsystem ? {
+      debian => 'libshadow-ruby1.8',
+      centos => 'ruby-shadow'
+    },
     ensure => 'installed'}
 }
 
