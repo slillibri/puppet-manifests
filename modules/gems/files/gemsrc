@@ -5,7 +5,5 @@
 :update_sources: true
 :backtrace: false
 :sources: 
-- http://gems.rubyforge.org
-- http://gems.github.com
-- http://gemcutter.org
+- http://rubygems.org
 rdoc: --inline-source --line-numbers

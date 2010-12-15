@@ -26,8 +26,8 @@ node 'li91-20.members.linode.com' {
   include gems
   include rabbitmq
   include stocks
-  include nagios
-  include nagios::target
+  # include nagios
+  # include nagios::target
   
   include ejabberd
   include nginx::geoip
