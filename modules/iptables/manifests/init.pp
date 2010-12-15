@@ -24,7 +24,7 @@ class iptables{
   class centos{
     file{'/etc/sysconfig/iptables':
       owner => 'root', group => 'root', mode => 700,
-      content => template('iptables.erb')}
+      content => template('iptables.centos.erb')}
     
     service{'iptables':
       ensure => 'running',
