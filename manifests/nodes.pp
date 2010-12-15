@@ -19,31 +19,33 @@ node 'li91-20.members.linode.com' {
   $ejabberd_admin = 'admin'
   
   include base
+  include base::$operatingsystem
   include iptables
+  include iptables::$operatingsystem
   include postfix
-  include cassandra
-  include imagemagick
-  include gems
-  include rabbitmq
-  include stocks
+  # include cassandra
+  # include imagemagick
+  # include gems
+  # include rabbitmq
+  # include stocks
   # include nagios
   # include nagios::target
   
-  include ejabberd
-  include nginx::geoip
+  # include ejabberd
+  # include nginx::geoip
   
-  gem_install{'amqp': required => [Class['development'], Package['ruby-dev']]}
-  gem_install{'gruff': required => Package['rmagick']}
-  gem_install{'rmagick': required => [Class['imagemagick'], Package['ruby-dev']]}
-  gem_install{'uuid': required => false}
-  gem_install{'log4r': required => false}
+  # gem_install{'amqp': required => [Class['development'], Package['ruby-dev']]}
+  # gem_install{'gruff': required => Package['rmagick']}
+  # gem_install{'rmagick': required => [Class['imagemagick'], Package['ruby-dev']]}
+  # gem_install{'uuid': required => false}
+  # gem_install{'log4r': required => false}
   
-  @@nagios_service{"check_web_auth_$hostname":
-    target => "/etc/nagios3/conf.d/$hostname.cfg",
-    check_command => 'check_web_auth!scott:password',
-    use => 'generic-service',
-    service_description => 'HTTP',
-    host_name => "$fqdn"}
+  # @@nagios_service{"check_web_auth_$hostname":
+  #   target => "/etc/nagios3/conf.d/$hostname.cfg",
+  #   check_command => 'check_web_auth!scott:password',
+  #   use => 'generic-service',
+  #   service_description => 'HTTP',
+  #   host_name => "$fqdn"}
 }
 
 node 'li96-152.members.linode.com' {

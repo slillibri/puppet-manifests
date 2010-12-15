@@ -12,7 +12,7 @@ class users{
     comment => 'Scott Lillibridge',
     home => '/home/scott',
     shell => '/bin/bash',
-    groups => ['dialout','cdrom','floppy','audio','video','plugdev','adm','sudo'],
+    groups => ['cdrom','floppy','audio','adm','sudo','users'],
     password => '$6$KNG1E0RL$yvOlUhO5jG10KIzA3yYiUFeX346peyLwEJCAdqvOiMK6HVM9K/dShG7ySgZ2d3TymRpGT7kqMTAHZv.WejfNQ.'}
   
   file{'/home/scott':
