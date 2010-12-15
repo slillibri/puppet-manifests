@@ -13,8 +13,8 @@ class users{
     home => '/home/scott',
     shell => '/bin/bash',
     groups => $operatingsystem ? {
-      debian => ['cdrom','floppy','adm','sudo','users'],
-      centos => ['cdrom','floppy','wheel','users']
+      debian => ['adm','sudo','users'],
+      centos => ['adm','wheel','users']
     },
     password => '$6$KNG1E0RL$yvOlUhO5jG10KIzA3yYiUFeX346peyLwEJCAdqvOiMK6HVM9K/dShG7ySgZ2d3TymRpGT7kqMTAHZv.WejfNQ.'}
   
