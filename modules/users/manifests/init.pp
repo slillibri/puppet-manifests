@@ -12,10 +12,10 @@ class users{
     comment => 'Scott Lillibridge',
     home => '/home/scott',
     shell => '/bin/bash',
-    groups => $operatingsystem{
+    groups => $operatingsystem ? {
       debian => ['cdrom','floppy','adm','sudo','users'],
       centos => ['cdrom','floppy','wheel','users']
-    }
+    },
     password => '$6$KNG1E0RL$yvOlUhO5jG10KIzA3yYiUFeX346peyLwEJCAdqvOiMK6HVM9K/dShG7ySgZ2d3TymRpGT7kqMTAHZv.WejfNQ.'}
   
   file{'/home/scott':
