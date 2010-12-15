@@ -3,7 +3,9 @@ class logwatch{
     ensure => 'installed'}
   
   package{'libsys-cpu-perl':
-    ensure => 'installed'}
+    ensure => $operatingsystem ? {
+      debian => 'installed'}
+  }
 
   file{'/usr/share/logwatch/default.conf/logwatch.conf':
     owner => 'root',
