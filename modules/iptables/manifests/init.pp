@@ -1,7 +1,7 @@
 class iptables{
   package{'iptables': ensure => 'installed'}
 
-  class iptables::debian{
+  class debian{
   
     file{'/etc/network/if-up.d/iptables':
       owner => 'root',
@@ -21,7 +21,7 @@ class iptables{
       subscribe => File['/etc/network/if-up.d/iptables']}
   }
   
-  class iptables::centos{
+  class centos{
     file{'/etc/sysconfig/iptables':
       owner => 'root', group => 'root', mode => 700,
       content => template('iptables.erb')}

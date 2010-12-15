@@ -9,7 +9,7 @@ class base{
   
   package{'telnet': ensure => 'installed'}
 
-  class base::debian{
+  class debian{
     include development
 
     file{'lsconfig':
@@ -34,5 +34,5 @@ class base{
       refreshonly => true}
   }
   
-  class base::centos{}
+  class centos{}
 }
