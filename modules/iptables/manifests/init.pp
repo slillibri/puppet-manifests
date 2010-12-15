@@ -1,5 +1,11 @@
 class iptables{
   package{'iptables': ensure => 'installed'}
+  
+  case $operatingsystem {
+    debian: {include base::debian}
+    centos: {include base::centos}
+    default: {warning("No operating system: $operatingsystem defined")}
+  }
 
   class debian{
   

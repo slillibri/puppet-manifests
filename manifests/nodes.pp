@@ -19,9 +19,7 @@ node 'li91-20.members.linode.com' {
   $ejabberd_admin = 'admin'
   
   include base
-  include base::centos
   include iptables
-  include iptables::centos
   include postfix
   # include cassandra
   # include imagemagick
