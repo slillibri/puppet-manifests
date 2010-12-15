@@ -33,4 +33,6 @@ class base{
       subscribe => File['apt-sources'],
       refreshonly => true}
   }
+  
+  class base::centos{}
 }

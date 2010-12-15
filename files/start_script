@@ -25,6 +25,7 @@ apt-get -y install screen ruby puppet libactiverecord-ruby rubygems
 /etc/init.d/puppet stop
 
 ##Fetch new puppet config
+## rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-4.noarch.rpm
 wget -O /etc/puppet/puppet.conf http://li96-152.members.linode.com/puppet.conf
 wget -O /etc/puppet/namespaceauth.conf http://li96-152.members.linode.com/namespaceauth.conf
 wget -O /etc/puppet/auth.conf http://li96-152.members.linode.com/auth.conf
